@@ -1,4 +1,8 @@
-  <h1>Vicky Delk's Blog</h1>
+<div align="center">
+
+<!-- Title -->
+
+<h1>Vicky Delk's Blog</h1>
 
 <!-- Badges -->
 
