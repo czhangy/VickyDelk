@@ -7,26 +7,26 @@
 <!-- Badges -->
 
 <p>
-  <a href="https://github.com/czhangy/vickydelk/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/czhangy/vickydelk" alt="contributors" />
-  </a>
-  <a href="">
-    <img src="https://img.shields.io/github/last-commit/czhangy/vickydelk" alt="last update" />
-  </a>
-  <a href="https://github.com/czhangy/vickydelk/network/members">
-    <img src="https://img.shields.io/github/forks/czhangy/vickydelk" alt="forks" />
-  </a>
-  <a href="https://github.com/czhangy/vickydelk/stargazers">
-    <img src="https://img.shields.io/github/stars/czhangy/vickydelk" alt="stars" />
-  </a>
-  <a href="https://github.com/czhangy/vickydelk/issues/">
-    <img src="https://img.shields.io/github/issues/czhangy/vickydelk" alt="open issues" />
+    <a href="https://github.com/czhangy/vickydelk/graphs/contributors">
+        <img src="https://img.shields.io/github/contributors/czhangy/vickydelk" alt="contributors" />
+    </a>
+    <a href="">
+        <img src="https://img.shields.io/github/last-commit/czhangy/vickydelk" alt="last update" />
+    </a>
+    <a href="https://github.com/czhangy/vickydelk/network/members">
+        <img src="https://img.shields.io/github/forks/czhangy/vickydelk" alt="forks" />
+    </a>
+    <a href="https://github.com/czhangy/vickydelk/stargazers">
+        <img src="https://img.shields.io/github/stars/czhangy/vickydelk" alt="stars" />
+    </a>
+    <a href="https://github.com/czhangy/vickydelk/issues/">
+        <img src="https://img.shields.io/github/issues/czhangy/vickydelk" alt="open issues" />
 </p>
 <h4>
     <a href="https://github.com/czhangy/vickydelk">Documentation</a>
-  <span> · </span>
+    <span> · </span>
     <a href="https://github.com/czhangy/vickydelk/issues/">Report Bug</a>
-  </h4>
+</h4>
 
 </div>
 
@@ -59,24 +59,33 @@
 ### Tech Stack
 
 <details>
-  <summary>Client</summary>
-  <br />
-  <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/NextJS-black?style=for-the-badge&logo=next.js&logoColor=white" alt="NextJS" /></a><a href="https://reactjs.org/"><img src="https://img.shields.io/badge/reactjs-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="ReactJS" /></a><a href="https://sass-lang.com/"><img src="https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white" alt="SASS" /></a>
+    <summary>Client</summary>
+    <br />
+    <a href="https://nextjs.org/">
+        <img src="https://img.shields.io/badge/NextJS-black?style=for-the-badge&logo=next.js&logoColor=white" alt="NextJS" />
+    </a><a href="https://reactjs.org/">
+        <img src="https://img.shields.io/badge/reactjs-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="ReactJS" />
+    </a><a href="https://sass-lang.com/">
+        <img src="https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white" alt="SASS" />
+    </a>
 </details>
 
 <details>
-  <summary>Server</summary>
-  <ul>
-    <li><a href="https://nodejs.org">Node.js</a></li>
-    <li><a href="https://expressjs.com/">Express.js</a></li>
-  </ul>
+    <summary>Server</summary>
+    <br />
+    <a href="https://nodejs.org/">
+        <img src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white" alt="NodeJS" />
+    </a><a href="https://expressjs.com/">
+        <img src="https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB" alt="ExpressJS" />
+    </a>
 </details>
 
 <details>
-<summary>Database</summary>
-  <ul>
-    <li><a href="https://www.mongodb.com/">MongoDB</a></li>
-  </ul>
+    <summary>Database</summary>
+    <br />
+    <a href="https://www.mongodb.com/">
+        <img src="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" />
+    </a>
 </details>
 
 <!-- Color Reference -->
@@ -170,5 +179,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Acknowledgements
 
--   [Shields.io](https://shields.io/)
 -   [Awesome README](https://github.com/matiassingers/awesome-readme)
+-   [Google Fonts](https://fonts.google.com/)
+-   [Shields.io](https://shields.io/)
