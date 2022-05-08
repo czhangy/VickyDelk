@@ -54,7 +54,7 @@
 
 ## About the Project
 
-<!-- TechStack -->
+<!-- Tech Stack -->
 
 ### Tech Stack
 
@@ -70,6 +70,7 @@
 <details>
   <summary>Server</summary>
   <ul>
+    <li><a href="https://nodejs.org">Node.js</a></li>
     <li><a href="https://expressjs.com/">Express.js</a></li>
   </ul>
 </details>
@@ -150,9 +151,8 @@ Distributed under the MIT License. See LICENSE.txt for more information.
 
 ## Contact
 
+Victoria Delk - [LinkedIn](https://www.linkedin.com/in/victoriadelk/)
 Charles Zhang - [Twitter](https://twitter.com/czhangy_) | [LinkedIn](https://www.linkedin.com/in/charles-zhang-14746519b/) | [Web](https://czhangy.io)
-
-Project Link: [https://github.com/czhangy/vickydelk](https://github.com/czhangy/vickydelk)
 
 <!-- Acknowledgments -->
 
