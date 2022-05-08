@@ -7,7 +7,7 @@ const Home = () => {
     return (
         <div id={styles.home}>
             <Head>
-                <title>Home | Vicky Delk's Blog</title>
+                <title>Home | Vicky Delk&apos;s Blog</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
         </div>
