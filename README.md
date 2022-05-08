@@ -1,34 +1,161 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+  <h1>Vicky Delk's Blog</h1>
+
+<!-- Badges -->
+
+<p>
+  <a href="https://github.com/czhangy/vickydelk/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/czhangy/vickydelk" alt="contributors" />
+  </a>
+  <a href="">
+    <img src="https://img.shields.io/github/last-commit/czhangy/vickydelk" alt="last update" />
+  </a>
+  <a href="https://github.com/czhangy/vickydelk/network/members">
+    <img src="https://img.shields.io/github/forks/czhangy/vickydelk" alt="forks" />
+  </a>
+  <a href="https://github.com/czhangy/vickydelk/stargazers">
+    <img src="https://img.shields.io/github/stars/czhangy/vickydelk" alt="stars" />
+  </a>
+  <a href="https://github.com/czhangy/vickydelk/issues/">
+    <img src="https://img.shields.io/github/issues/czhangy/vickydelk" alt="open issues" />
+</p>
+
+<h4>
+    <a href="https://github.com/Louis3797/awesome-readme-template">Documentation</a>
+  <span> · </span>
+    <a href="https://github.com/Louis3797/awesome-readme-template/issues/">Report Bug</a>
+  </h4>
+
+</div>
+
+<br />
+
+<!-- Table of Contents -->
+
+# Table of Contents
+
+-   [About the Project](#about-the-project)
+    -   [Tech Stack](#tech-stack)
+    -   [Features](#features)
+    -   [Color Reference](#color-reference)
+    -   [Environment Variables](#environment-variables)
+-   [Getting Started](#getting-started)
+    -   [Prerequisites](#prerequisites)
+    -   [Run Locally](#run-locally)
+-   [Usage](#usage)
+-   [Roadmap](#roadmap)
+-   [Contributing](#contributing)
+    -   [Code of Conduct](#code-of-conduct)
+-   [License](#license)
+-   [Contact](#contact)
+-   [Acknowledgements](#acknowledgements)
+
+<!-- About the Project -->
+
+## About the Project
+
+<!-- TechStack -->
+
+### Tech Stack
+
+<details>
+  <summary>Client</summary>
+  <ul>
+    <li><a href="https://nextjs.org/">Next.js</a></li>
+    <li><a href="https://reactjs.org/">React.js</a></li>
+    <li><a href="https://sass-lang.com/">SASS</a></li>
+  </ul>
+</details>
+
+<details>
+  <summary>Server</summary>
+  <ul>
+    <li><a href="https://expressjs.com/">Express.js</a></li>
+  </ul>
+</details>
+
+<details>
+<summary>Database</summary>
+  <ul>
+    <li><a href="https://www.mongodb.com/">MongoDB</a></li>
+  </ul>
+</details>
+
+<!-- Color Reference -->
+
+### Color Reference
+
+| Color         | Hex                                                              |
+| ------------- | ---------------------------------------------------------------- |
+| Primary Color | ![#222831](https://via.placeholder.com/10/FDCDD5?text=+) #FDCDD5 |
+| Accent Color  | ![#00ADB5](https://via.placeholder.com/10/F5FDA9?text=+) #F5FDA9 |
+| Text Color    | ![#EEEEEE](https://via.placeholder.com/10/000000?text=+) #000000 |
+
+<!-- Env Variables -->
+
+### Environment Variables
+
+To run this project, you will need to add the following environment variables to your `.env` file
+
+WIP
+
+<!-- Getting Started -->
 
 ## Getting Started
 
-First, run the development server:
+<!-- Prerequisites -->
+
+### Prerequisites
+
+This project uses NPM as a package manager
+
+<!-- Run Locally -->
+
+### Run Locally
+
+Clone the project
 
 ```bash
-npm run dev
-# or
-yarn dev
+  git clone https://github.com/czhangy/vickydelk.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Install dependencies
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```bash
+  npm install
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Start the application
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```bash
+  npm run dev
+```
 
-## Learn More
+<!-- Roadmap -->
 
-To learn more about Next.js, take a look at the following resources:
+## Roadmap
 
--   [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
--   [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+-   [ ] Build out nav components
+-   [ ] Build Home Page
+-   [ ] Build About Page
+-   [ ] Build Blog Page
+-   [ ] Build blog post API
+-   [ ] Build Resume Page
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
+Distributed under the no License. See LICENSE.txt for more information.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<!-- Contact -->
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Contact
+
+Charles Zhang - [Twitter](https://twitter.com/czhangy_) | [LinkedIn](https://www.linkedin.com/in/charles-zhang-14746519b/) | [Web](https://czhangy.io)
+
+Project Link: [https://github.com/czhangy/vickydelk](https://github.com/czhangy/vickydelk)
+
+<!-- Acknowledgments -->
+
+## Acknowledgements
+
+-   [Shields.io](https://shields.io/)
+-   [Awesome README](https://github.com/matiassingers/awesome-readme)
