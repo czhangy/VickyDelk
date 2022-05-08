@@ -151,11 +151,18 @@ Distributed under the MIT License. See LICENSE.txt for more information.
 
 ## Contact
 
-Victoria Delk: <a href="https://www.linkedin.com/in/victoriadelk/">
+#### Victoria Delk:
+
+<a href="https://www.linkedin.com/in/victoriadelk/">
 <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
 </a>
 <br />
-Charles Zhang: <a href="https://twitter.com/czhangy_">
+
+<br />
+
+#### Charles Zhang:
+
+<a href="https://twitter.com/czhangy_">
 <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter" />
 </a><a href="https://www.linkedin.com/in/charles-zhang-14746519b/">
 <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
