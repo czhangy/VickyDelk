@@ -60,6 +60,7 @@
 
 <details>
   <summary>Client</summary>
+  <br />
   <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/NextJS-black?style=for-the-badge&logo=next.js&logoColor=white" alt="NextJS" /></a><a href="https://reactjs.org/"><img src="https://img.shields.io/badge/reactjs-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="ReactJS" /></a><a href="https://sass-lang.com/"><img src="https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white" alt="SASS" /></a>
 </details>
 
