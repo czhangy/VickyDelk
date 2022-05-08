@@ -18,11 +18,10 @@
   <a href="https://github.com/czhangy/vickydelk/issues/">
     <img src="https://img.shields.io/github/issues/czhangy/vickydelk" alt="open issues" />
 </p>
-
 <h4>
-    <a href="https://github.com/Louis3797/awesome-readme-template">Documentation</a>
+    <a href="https://github.com/czhangy/vickydelk">Documentation</a>
   <span> · </span>
-    <a href="https://github.com/Louis3797/awesome-readme-template/issues/">Report Bug</a>
+    <a href="https://github.com/czhangy/vickydelk/issues/">Report Bug</a>
   </h4>
 
 </div>
@@ -43,8 +42,6 @@
     -   [Run Locally](#run-locally)
 -   [Usage](#usage)
 -   [Roadmap](#roadmap)
--   [Contributing](#contributing)
-    -   [Code of Conduct](#code-of-conduct)
 -   [License](#license)
 -   [Contact](#contact)
 -   [Acknowledgements](#acknowledgements)
@@ -143,7 +140,7 @@ Start the application
 
 ## License
 
-Distributed under the no License. See LICENSE.txt for more information.
+Distributed under the MIT License. See LICENSE.txt for more information.
 
 <!-- Contact -->
 
