@@ -1,0 +1,11 @@
+@use "../constants";
+
+#footer {
+    padding: 32px;
+    width: 100%;
+    background: constants.$accent-color;
+    text-align: center;
+    font-family: constants.$accent-font;
+    font-size: 1.5rem;
+    box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.3);
+}

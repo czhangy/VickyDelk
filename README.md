@@ -142,7 +142,7 @@ Start the application
 
 ## Roadmap
 
--   [ ] Build out nav components
+-   [x] Build out nav components
 -   [ ] Build Home Page
 -   [ ] Build About Page
 -   [ ] Build Blog Page

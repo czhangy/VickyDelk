@@ -1,0 +1,61 @@
+@use "../constants";
+
+#navbar {
+    height: constants.$navbar-height;
+    width: 100%;
+    background: constants.$accent-color;
+    padding: 0 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    box-shadow: constants.$shadow;
+    position: relative;
+
+    #site-title {
+        font-family: constants.$accent-font;
+        font-size: 3rem;
+    }
+
+    #link-container {
+        width: 300px;
+        display: flex;
+        justify-content: space-between;
+
+        .nav-link {
+            font-family: constants.$main-font;
+            letter-spacing: 1px;
+            font-size: 1.2rem;
+        }
+    }
+
+    #menu-button {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+
+        .menu-line {
+            width: 24px;
+            border: none;
+            height: 2px;
+            background: black;
+        }
+    }
+}
+
+@media screen and (max-width: constants.$mobile) {
+    #navbar {
+        #site-title {
+            font-size: 2rem;
+        }
+
+        #link-container {
+            display: none;
+        }
+
+        #menu-button {
+            display: block;
+        }
+    }
+}

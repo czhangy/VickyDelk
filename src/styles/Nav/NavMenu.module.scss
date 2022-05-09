@@ -1,0 +1,37 @@
+@use "../constants";
+
+#nav-menu {
+    position: absolute;
+    top: calc(constants.$navbar-height - 20px);
+    right: 32px;
+    background: white;
+    border-radius: 8px;
+    padding: 8px 0;
+    z-index: constants.$nav-menu;
+    transition: all 0.2s ease;
+    box-shadow: constants.$shadow;
+
+    .nav-link {
+        color: black;
+        display: block;
+        font-family: constants.$main-font;
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+}
+
+.show {
+    opacity: 1;
+}
+
+.hide {
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+@media (hover: hover) {
+    #nav-menu .nav-link:hover {
+        background: rgba(constants.$main-color, 0.7);
+    }
+}

@@ -3,8 +3,17 @@ $main-font: "Varela Round", sans-serif;
 $accent-font: "Leckerli One", cursive;
 
 // Color themes
-$main-color: #fdcdd5;
-$accent-color: #f5fda9;
+$main-color: #fff1b5;
+$accent-color: #ffb6b7;
 
 // Page sizing
 $navbar-height: 100px;
+
+// Common styles
+$shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+
+// Breakpoints
+$mobile: 767px;
+
+// Z-Indices
+$nav-menu: 2;
