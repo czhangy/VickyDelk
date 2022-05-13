@@ -1,4 +1,4 @@
-@use "../constants";
+@use "@styles/constants";
 
 #nav-menu {
     position: absolute;
@@ -7,7 +7,6 @@
     background: white;
     border-radius: 8px;
     padding: 8px 0;
-    z-index: constants.$nav-menu;
     transition: all 0.2s ease;
     box-shadow: constants.$shadow;
 

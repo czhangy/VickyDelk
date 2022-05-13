@@ -1,6 +1,77 @@
-@use "../constants";
+@use "@styles/constants";
 
 #home {
     background: constants.$main-color;
     height: calc(100vh - constants.$navbar-height);
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 50%;
+        position: relative;
+
+        .note-container {
+            position: absolute;
+            transition: box-shadow 0.2s ease;
+            z-index: 10;
+        }
+
+        #note-1 {
+            top: 100px;
+            right: 60%;
+            transform: rotate(10deg);
+            box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        #note-2 {
+            top: 300px;
+            right: 30%;
+            transform: rotate(25deg);
+            box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        #note-3 {
+            top: 500px;
+            right: 60%;
+            transform: rotate(-20deg);
+            box-shadow: -10px 10px 10px rgba(0, 0, 0, 0.3);
+        }
+    }
+
+    .red-line {
+        height: 100%;
+        width: 2px;
+        background: #dc6d71;
+        position: absolute;
+        left: 100px;
+    }
+
+    .blue-line {
+        width: 100%;
+        position: absolute;
+        height: 2px;
+        background: #88a5e4;
+    }
+}
+
+@media (hover: hover) {
+    #home > .container {
+        #note-1:hover {
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        #note-2:hover {
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        #note-3:hover {
+            box-shadow: -10px 10px 20px rgba(0, 0, 0, 0.5);
+        }
+    }
 }
