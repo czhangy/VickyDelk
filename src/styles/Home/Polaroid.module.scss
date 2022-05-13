@@ -7,13 +7,6 @@
     box-shadow: -10px 10px 10px rgba(0, 0, 0, 0.3);
     position: relative;
 
-    #polaroid-caption {
-        font-family: constants.$accent-font;
-        font-size: 3rem;
-        text-align: center;
-        margin-top: 20px;
-    }
-
     #tape {
         position: absolute;
         background: rgba(255, 255, 235, 0.6);
@@ -24,5 +17,38 @@
         right: -30px;
         transform: rotate(45deg);
         z-index: 2;
+    }
+
+    #polaroid-image {
+        height: 360px;
+        width: 360px;
+    }
+
+    #polaroid-caption {
+        font-family: constants.$accent-font;
+        font-size: 3rem;
+        text-align: center;
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: constants.$mobile) {
+    #polaroid {
+        padding: 20px;
+
+        #tape {
+            height: 25px;
+            width: 70px;
+            right: -20px;
+        }
+
+        #polaroid-image {
+            height: 280px;
+            width: 280px;
+        }
+
+        #polaroid-caption {
+            font-size: 2.4rem;
+        }
     }
 }

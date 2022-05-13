@@ -14,7 +14,7 @@ const Home = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <vr className={styles["red-line"]} />
-            {[...Array(8)].map((x, i) => (
+            {[...Array(16)].map((x, i) => (
                 <hr
                     className={styles["blue-line"]}
                     style={{ top: `${i * 100 + 100}px` }}
@@ -24,16 +24,11 @@ const Home = () => {
             <div className={styles.container}>
                 <Polaroid />
             </div>
-            <div className={styles.container}>
-                <div id={styles["note-1"]} className={styles["note-container"]}>
-                    <StickyNote title="Post #1" />
-                </div>
-                <div id={styles["note-2"]} className={styles["note-container"]}>
-                    <StickyNote title="Post #2" />
-                </div>
-                <div id={styles["note-3"]} className={styles["note-container"]}>
-                    <StickyNote title="Post #3" />
-                </div>
+            <div id={styles["recent-posts"]} className={styles.container}>
+                <h2 id={styles["recent-posts-header"]}>Recent Posts</h2>
+                <StickyNote title="Post #1" />
+                <StickyNote title="Post #2" />
+                <StickyNote title="Post #3" />
             </div>
         </div>
     );
