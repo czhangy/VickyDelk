@@ -13,14 +13,6 @@ const Home = () => {
                 <title>Home | Vicky Delk&apos;s Blog</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <vr className={styles["red-line"]} />
-            {[...Array(16)].map((x, i) => (
-                <hr
-                    className={styles["blue-line"]}
-                    style={{ top: `${i * 100 + 100}px` }}
-                    key={i}
-                />
-            ))}
             <div className={styles.container}>
                 <Polaroid />
             </div>

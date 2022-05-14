@@ -1,8 +1,6 @@
 @use "@styles/constants";
 
 #home {
-    background: constants.$main-color;
-    height: calc(100vh - constants.$navbar-height);
     display: flex;
     overflow: hidden;
     position: relative;
@@ -13,9 +11,10 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 100%;
+        min-height: calc(100vh - constants.$navbar-height);
         width: 50%;
         position: relative;
+        padding: 16px;
 
         #recent-posts-header {
             font-family: constants.$accent-font;
@@ -23,21 +22,6 @@
             letter-spacing: 2px;
             margin-bottom: 2rem;
         }
-    }
-
-    .red-line {
-        height: 100%;
-        width: 2px;
-        background: #dc6d71;
-        position: absolute;
-        left: 100px;
-    }
-
-    .blue-line {
-        width: 100%;
-        position: absolute;
-        height: 2px;
-        background: #88a5e4;
     }
 }
 
@@ -47,6 +31,7 @@
         flex-direction: column;
 
         .container {
+            min-height: 0;
             height: auto;
             padding: 100px 0;
             width: 100%;

@@ -4,7 +4,8 @@ html,
 body {
     padding: 0;
     margin: 0;
-    background: constants.$accent-font;
+    background-image: url("/images/notebook-bg.jpg");
+    background-size: 100vw;
 }
 
 a {
@@ -43,4 +44,11 @@ hr {
 
 ::-webkit-scrollbar-track {
     background: constants.$main-color;
+}
+
+@media screen and (max-width: constants.$laptop) {
+    html,
+    body {
+        background-size: auto;
+    }
 }
