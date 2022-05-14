@@ -1,0 +1,5 @@
+@use "@styles/constants";
+
+#about {
+    min-height: calc(100vh - constants.$navbar-height);
+}
