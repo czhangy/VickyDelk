@@ -2,6 +2,8 @@
 import styles from "@styles/Blog/Blog.module.scss";
 // NextJS
 import Head from "next/head";
+// Local components
+import SearchBar from "@components/Blog/SearchBar.js";
 
 const Blog = () => {
     return (
@@ -10,7 +12,10 @@ const Blog = () => {
                 <title>Blog | Vicky Delk&apos;s Blog</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            B
+            <div id={styles.filters}>
+                <div id={styles.tape} />
+                <SearchBar />
+            </div>
         </div>
     );
 };
