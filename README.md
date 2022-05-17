@@ -74,9 +74,7 @@
     <summary>Server</summary>
     <br />
     <a href="https://nodejs.org/">
-        <img src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white" alt="NodeJS" />
-    </a><a href="https://expressjs.com/">
-        <img src="https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB" alt="ExpressJS" />
+        <img src="https://img.shields.io/badge/NextJS-black?style=for-the-badge&logo=next.js&logoColor=white" alt="NextJS" />
     </a>
 </details>
 
@@ -88,14 +86,21 @@
     </a>
 </details>
 
+<details>
+    <summary>Deployment</summary>
+    <br />
+    <a href="https://www.vercel.com/">
+        <img src="https://img.shields.io/badge/-vercel-black?logo=vercel&logoColor=white&style=for-the-badge" alt="Vercel" />
+    </a>
+</details>
+
 <!-- Color Reference -->
 
 ### Color Reference
 
 | Color         | Hex                                                              |
 | ------------- | ---------------------------------------------------------------- |
-| Primary Color | ![#222831](https://via.placeholder.com/10/FDCDD5?text=+) #FDCDD5 |
-| Accent Color  | ![#00ADB5](https://via.placeholder.com/10/F5FDA9?text=+) #F5FDA9 |
+| Accent Color  | ![#FFB6B7](https://via.placeholder.com/10/FFB6B7?text=+) #FFB6B7 |
 | Text Color    | ![#EEEEEE](https://via.placeholder.com/10/000000?text=+) #000000 |
 
 <!-- Env Variables -->
@@ -135,7 +140,7 @@ Install dependencies
 Start the application
 
 ```bash
-  npm run dev
+  npm run start
 ```
 
 <!-- Roadmap -->
@@ -143,11 +148,13 @@ Start the application
 ## Roadmap
 
 -   [x] Build out nav components
--   [ ] Build Home Page
--   [ ] Build About Page
--   [ ] Build Blog Page
+-   [x] Build Home Page
 -   [ ] Build blog post API
+-   [ ] Build Blog Page
+-   [ ] Buidl blog page filters
+-   [ ] Build About Page
 -   [ ] Build Resume Page
+-   [ ] Build post blog interface
 
 ## License
 
