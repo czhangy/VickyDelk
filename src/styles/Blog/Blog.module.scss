@@ -7,22 +7,11 @@
     align-items: center;
     padding: 32px;
 
-    #filters {
-        background: white;
-        width: 90%;
-        padding: 32px;
-        position: relative;
-
-        #tape {
-            position: absolute;
-            background: rgba(255, 255, 235, 0.6);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-            height: 30px;
-            width: 100px;
-            top: -15px;
-            right: 50%;
-            transform: translateX(50%);
-            z-index: 2;
-        }
+    #posts {
+        min-width: 400px;
+        width: 80%;
+        max-width: 800px;
+        margin: 0 auto;
+        display: block;
     }
 }
