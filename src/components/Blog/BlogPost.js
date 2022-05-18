@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const BlogPost = ({ post }) => {
     return (
-        <Link href={`/blog/${post.id}`}>
+        <Link href={`/blog/${post._id}`}>
             <div className={styles["blog-post"]}>
                 <div className={`${styles.tape} ${styles["top-tape"]}`} />
                 <div className={`${styles.tape} ${styles["bottom-tape"]}`} />
@@ -14,7 +14,6 @@ const BlogPost = ({ post }) => {
                     <h3 className={styles["post-title"]}>{post.title}</h3>
                     <p className={styles["post-timestamp"]}>{post.timestamp}</p>
                 </div>
-                <hr className={styles.separator} />
                 <div className={styles["post-body"]}>
                     <div className={styles["post-image"]}>
                         <Image

@@ -4,8 +4,10 @@ import styles from "@styles/Blog/Blog.module.scss";
 import Head from "next/head";
 // Local components
 import BlogPost from "@components/Blog/BlogPost.js";
+// MongoDB
+import clientPromise from "@lib/mongodb.js";
 
-const Blog = () => {
+const Blog = (props) => {
     const testPost = {
         id: 1,
         title: "Test Post :)",
@@ -21,12 +23,26 @@ const Blog = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <ul id={styles.posts}>
-                <li>
-                    <BlogPost post={testPost} />
-                </li>
+                {props.posts.map(function (post, i) {
+                    return (
+                        <li key={i}>
+                            <BlogPost post={post} />
+                        </li>
+                    );
+                })}
             </ul>
         </div>
     );
 };
+
+export async function getServerSideProps() {
+    const client = await clientPromise;
+    const db = client.db("VickyDelk");
+    let posts = await db.collection("posts").find({}).toArray();
+    posts = JSON.parse(JSON.stringify(posts)).slice(0, 5);
+    return {
+        props: { posts },
+    };
+}
 
 export default Blog;
