@@ -49,7 +49,7 @@ ul {
 }
 
 ::-webkit-scrollbar-track {
-    background: constants.$main-color;
+    background: rgba(yellow, 0.3);
 }
 
 @media screen and (max-width: constants.$laptop) {

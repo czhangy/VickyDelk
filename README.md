@@ -98,10 +98,10 @@
 
 ### Color Reference
 
-| Color         | Hex                                                              |
-| ------------- | ---------------------------------------------------------------- |
-| Accent Color  | ![#FFB6B7](https://via.placeholder.com/10/FFB6B7?text=+) #FFB6B7 |
-| Text Color    | ![#EEEEEE](https://via.placeholder.com/10/000000?text=+) #000000 |
+| Color        | Hex                                                              |
+| ------------ | ---------------------------------------------------------------- |
+| Accent Color | ![#FFB6B7](https://via.placeholder.com/10/FFB6B7?text=+) #FFB6B7 |
+| Text Color   | ![#EEEEEE](https://via.placeholder.com/10/000000?text=+) #000000 |
 
 <!-- Env Variables -->
 
