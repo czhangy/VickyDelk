@@ -151,12 +151,13 @@ Start the application
 
 -   [x] Build out nav components
 -   [x] Build Home Page
--   [ ] Build blog post API
 -   [ ] Build Blog Page
--   [ ] Buidl blog page filters
+-   [ ] Build post blog interface
+-   [ ] Build blog post API
+-   [ ] Build blog page filters
+-   [ ] Build auth
 -   [ ] Build About Page
 -   [ ] Build Resume Page
--   [ ] Build post blog interface
 
 ## License
 
