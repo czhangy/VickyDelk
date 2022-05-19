@@ -52,7 +52,7 @@ ul {
     background: rgba(yellow, 0.3);
 }
 
-@media screen and (max-width: constants.$laptop) {
+@media screen and (max-width: constants.$laptop-l) {
     html,
     body {
         background-size: auto;

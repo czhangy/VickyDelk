@@ -38,18 +38,16 @@
         .post-title {
             font-family: constants.$accent-font;
             font-size: 2rem;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 70%;
         }
 
         .post-timestamp {
             font-family: constants.$accent-font;
             font-size: 1.3rem;
         }
-    }
-
-    .separator {
-        background: black;
-        height: 2px;
-        width: 80%;
     }
 
     .post-body {
@@ -72,6 +70,56 @@
             -webkit-line-clamp: 10;
             -webkit-box-orient: vertical;
             overflow: hidden;
+        }
+    }
+}
+
+@media screen and (max-width: constants.$laptop) {
+    .blog-post > .post-body {
+        .post-image {
+            display: none;
+        }
+
+        .post-content {
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (max-width: constants.$mobile) {
+    .blog-post {
+        padding: 32px;
+
+        .tape {
+            height: 15px;
+            width: 50px;
+        }
+
+        .top-tape {
+            top: 7.5px;
+            left: -12.5px;
+        }
+
+        .bottom-tape {
+            bottom: 7.5px;
+            right: -12.5px;
+        }
+
+        .post-header {
+            margin-bottom: 0;
+
+            .post-title {
+                font-size: 1.3rem;
+                width: 100%;
+            }
+
+            .post-timestamp {
+                display: none;
+            }
+        }
+
+        .post-body {
+            display: none;
         }
     }
 }

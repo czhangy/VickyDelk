@@ -61,11 +61,13 @@
 <details>
     <summary>Client</summary>
     <br />
+    <a href="https://reactjs.org/">
+        <img src="https://img.shields.io/badge/reactjs-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="ReactJS" />
+    </a>
     <a href="https://nextjs.org/">
         <img src="https://img.shields.io/badge/NextJS-black?style=for-the-badge&logo=next.js&logoColor=white" alt="NextJS" />
-    </a><a href="https://reactjs.org/">
-        <img src="https://img.shields.io/badge/reactjs-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="ReactJS" />
-    </a><a href="https://sass-lang.com/">
+    </a>
+    <a href="https://sass-lang.com/">
         <img src="https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white" alt="SASS" />
     </a>
 </details>
@@ -98,10 +100,10 @@
 
 ### Color Reference
 
-| Color        | Hex                                                              |
-| ------------ | ---------------------------------------------------------------- |
-| Accent Color | ![#FFB6B7](https://via.placeholder.com/10/FFB6B7?text=+) #FFB6B7 |
-| Text Color   | ![#EEEEEE](https://via.placeholder.com/10/000000?text=+) #000000 |
+| Color        | Hex     |
+| ------------ | ------- |
+| Accent Color | #FFB6B7 |
+| Text Color   | #000000 |
 
 <!-- Env Variables -->
 
@@ -109,7 +111,7 @@
 
 To run this project, you will need to add the following environment variables to your `.env` file
 
-WIP
+`MONGODB_URI`
 
 <!-- Getting Started -->
 
@@ -149,12 +151,13 @@ Start the application
 
 -   [x] Build out nav components
 -   [x] Build Home Page
--   [ ] Build blog post API
 -   [ ] Build Blog Page
--   [ ] Buidl blog page filters
+-   [ ] Build post blog interface
+-   [ ] Build blog post API
+-   [ ] Build blog page filters
+-   [ ] Build auth
 -   [ ] Build About Page
 -   [ ] Build Resume Page
--   [ ] Build post blog interface
 
 ## License
 
@@ -174,11 +177,13 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 #### Charles Zhang:
 
+<a href="https://www.linkedin.com/in/charles-zhang-14746519b/">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+</a>
 <a href="https://twitter.com/czhangy_">
     <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter" />
-</a><a href="https://www.linkedin.com/in/charles-zhang-14746519b/">
-    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
-</a><a href="https://czhangy.io">
+</a>
+<a href="https://czhangy.io">
     <img src="https://img.shields.io/badge/-personal%20site-darkgrey?logo=code-review&logoColor=white&style=for-the-badge" alt="Personal Site" />
 </a>
 

@@ -2,16 +2,17 @@
 import styles from "@styles/Blog/Blog.module.scss";
 // NextJS
 import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
 // Local components
 import BlogPost from "@components/Blog/BlogPost.js";
+// MongoDB
+import clientPromise from "@lib/mongodb.js";
 
-const Blog = () => {
-    const testPost = {
-        id: 1,
-        title: "Test Post :)",
-        timestamp: "4/4/2022",
-        content:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+const Blog = (props) => {
+    // Calculate total number of pages
+    const getNumPages = () => {
+        return Math.floor(props.posts.length / 5) + 1;
     };
 
     return (
@@ -20,13 +21,70 @@ const Blog = () => {
                 <title>Blog | Vicky Delk&apos;s Blog</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+            <div id={styles.control}>
+                <p id={styles["page-num"]}>Page 1 of {getNumPages()}</p>
+                <div id={styles["control-buttons"]}>
+                    <Link href="/post">
+                        <a
+                            id={styles["new-post"]}
+                            className={styles["control-button"]}
+                        >
+                            <Image
+                                src="/icons/add.svg"
+                                alt=""
+                                height={16}
+                                width={16}
+                            />
+                            <p className={styles["button-text"]}>New Post</p>
+                        </a>
+                    </Link>
+                    <button className={styles["control-button"]}>
+                        <Image
+                            src="/icons/sort.svg"
+                            alt=""
+                            height={16}
+                            width={16}
+                        />
+                        <p className={styles["button-text"]}>Sort By</p>
+                    </button>
+                    <button className={styles["control-button"]}>
+                        <Image
+                            src="/icons/filter.svg"
+                            alt=""
+                            height={16}
+                            width={16}
+                        />
+                        <p className={styles["button-text"]}>Filter</p>
+                    </button>
+                </div>
+            </div>
             <ul id={styles.posts}>
-                <li>
-                    <BlogPost post={testPost} />
-                </li>
+                {props.posts.map(function (post, i) {
+                    return (
+                        <li className={styles["blog-post"]} key={i}>
+                            <BlogPost post={post} />
+                        </li>
+                    );
+                })}
             </ul>
         </div>
     );
 };
+
+// Fetch all posts, sorted from most recent -> least recent
+export async function getServerSideProps() {
+    // Fetch from MongoDB
+    const client = await clientPromise;
+    const db = client.db("VickyDelk");
+    let posts = await db
+        .collection("posts")
+        .find({})
+        .sort({ timestamp: -1 })
+        .toArray();
+    posts = JSON.parse(JSON.stringify(posts));
+    return {
+        props: { posts },
+    };
+}
 
 export default Blog;

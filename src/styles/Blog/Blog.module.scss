@@ -5,13 +5,85 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 32px;
+    padding: 64px 32px;
+
+    #control {
+        min-width: 400px;
+        width: 80%;
+        max-width: 800px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 32px;
+
+        #page-num {
+            font-family: constants.$accent-font;
+            font-size: 2rem;
+        }
+
+        #control-buttons {
+            display: flex;
+
+            .control-button {
+                background: constants.$accent-color;
+                border: none;
+                border-radius: 4px;
+                margin-right: 16px;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                padding: 8px 16px;
+                transition: all 0.2s ease;
+
+                .button-text {
+                    font-family: constants.$main-font;
+                    font-size: 1.2rem;
+                    margin-left: 8px;
+                }
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
 
     #posts {
-        min-width: 400px;
+        min-width: 350px;
         width: 80%;
         max-width: 800px;
         margin: 0 auto;
         display: block;
+
+        .blog-post {
+            margin-bottom: 32px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: constants.$laptop) {
+    #blog > #control {
+        justify-content: center;
+
+        #page-num {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: constants.$mobile) {
+    #blog > #control > #control-buttons > .control-button > .button-text {
+        font-size: 0.9rem;
+    }
+}
+
+@media (hover: hover) {
+    #blog > #control > #control-buttons > .control-button:hover {
+        transform: scale(1.03);
+        box-shadow: constants.$shadow;
     }
 }
