@@ -1,0 +1,131 @@
+@use "@styles/constants";
+
+.blog-post-card {
+    width: 100%;
+    background: white;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    padding: 64px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    position: relative;
+
+    .tape {
+        position: absolute;
+        background: rgba(255, 255, 235, 0.6);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+        height: 30px;
+        width: 100px;
+    }
+
+    .top-tape {
+        top: 15px;
+        left: -25px;
+        transform: rotate(-45deg);
+    }
+
+    .bottom-tape {
+        bottom: 15px;
+        right: -25px;
+        transform: rotate(-45deg);
+    }
+
+    .post-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 32px;
+
+        .post-title {
+            font-family: constants.$accent-font;
+            font-size: 2rem;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 70%;
+        }
+
+        .post-timestamp {
+            font-family: constants.$accent-font;
+            font-size: 1.3rem;
+        }
+    }
+
+    .post-body {
+        margin-top: 32px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .post-image {
+            height: 240px;
+            width: 240px;
+            position: relative;
+        }
+
+        .post-content {
+            font-family: constants.$main-font;
+            font-size: 1.2rem;
+            width: 60%;
+            display: -webkit-box;
+            -webkit-line-clamp: 10;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    }
+}
+
+@media screen and (max-width: constants.$laptop) {
+    .blog-post-card > .post-body {
+        .post-image {
+            display: none;
+        }
+
+        .post-content {
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (max-width: constants.$mobile) {
+    .blog-post-card {
+        padding: 32px;
+
+        .tape {
+            height: 15px;
+            width: 50px;
+        }
+
+        .top-tape {
+            top: 7.5px;
+            left: -12.5px;
+        }
+
+        .bottom-tape {
+            bottom: 7.5px;
+            right: -12.5px;
+        }
+
+        .post-header {
+            margin-bottom: 0;
+
+            .post-title {
+                font-size: 1.3rem;
+                width: 100%;
+            }
+
+            .post-timestamp {
+                display: none;
+            }
+        }
+
+        .post-body {
+            display: none;
+        }
+    }
+}
+
+@media (hover: hover) {
+    .blog-post-card:hover {
+        transform: scale(1.03);
+    }
+}

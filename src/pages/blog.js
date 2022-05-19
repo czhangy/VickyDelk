@@ -5,7 +5,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 // Local components
-import BlogPost from "@components/Blog/BlogPost.js";
+import BlogPostCard from "@components/Blog/BlogPostCard.js";
 // MongoDB
 import clientPromise from "@lib/mongodb.js";
 
@@ -62,7 +62,7 @@ const Blog = (props) => {
                 {props.posts.map((post, i) => {
                     return (
                         <li className={styles["blog-post"]} key={i}>
-                            <BlogPost post={post} />
+                            <BlogPostCard post={post} />
                         </li>
                     );
                 })}

@@ -1,10 +1,10 @@
 // Stylesheet
-import styles from "@styles/Blog/BlogPost.module.scss";
+import styles from "@styles/Blog/BlogPostCard.module.scss";
 // NextJS
 import Link from "next/link";
 import Image from "next/image";
 
-const BlogPost = ({ post }) => {
+const BlogPostCard = ({ post }) => {
     // Format timestamp to MM/DD/YYYY
     const formatDate = () => {
         let date = new Date(post.timestamp);
@@ -16,7 +16,7 @@ const BlogPost = ({ post }) => {
 
     return (
         <Link href={`/blog/${post._id}`}>
-            <div className={styles["blog-post"]}>
+            <div className={styles["blog-post-card"]}>
                 <div className={`${styles.tape} ${styles["top-tape"]}`} />
                 <div className={`${styles.tape} ${styles["bottom-tape"]}`} />
                 <div className={styles["post-header"]}>
@@ -39,4 +39,4 @@ const BlogPost = ({ post }) => {
     );
 };
 
-export default BlogPost;
+export default BlogPostCard;

@@ -1,10 +1,10 @@
 // Stylesheet
-import styles from "@styles/Post/Post.module.scss";
+import styles from "@styles/Blog/BlogPost.module.scss";
 // MongoDB
 import clientPromise from "@lib/mongodb.js";
 import { ObjectId } from "mongodb";
 
-const Post = ({ post }) => {
+const BlogPost = ({ post }) => {
     // Format timestamp to MM/DD/YYYY
     const formatDate = () => {
         let date = new Date(post.timestamp);
@@ -35,7 +35,7 @@ const Post = ({ post }) => {
     };
 
     return (
-        <div id={styles.post}>
+        <div id={styles["blog-post"]}>
             <div id={styles["post-container"]}>
                 <div id={styles.tape} />
                 <h1 id={styles["post-title"]}>{post.title}</h1>
@@ -65,4 +65,4 @@ export async function getServerSideProps(context) {
     };
 }
 
-export default Post;
+export default BlogPost;
