@@ -70,6 +70,55 @@
     }
 }
 
+@media screen and (max-width: constants.$laptop) {
+    .blog-post > .post-body {
+        .post-image {
+            display: none;
+        }
+
+        .post-content {
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (max-width: constants.$mobile) {
+    .blog-post {
+        padding: 32px;
+
+        .tape {
+            height: 15px;
+            width: 50px;
+        }
+
+        .top-tape {
+            top: 7.5px;
+            left: -12.5px;
+        }
+
+        .bottom-tape {
+            bottom: 7.5px;
+            right: -12.5px;
+        }
+
+        .post-header {
+            margin-bottom: 0;
+
+            .post-title {
+                font-size: 1.3rem;
+            }
+
+            .post-timestamp {
+                display: none;
+            }
+        }
+
+        .post-body {
+            display: none;
+        }
+    }
+}
+
 @media (hover: hover) {
     .blog-post:hover {
         transform: scale(1.03);
