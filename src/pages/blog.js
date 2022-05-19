@@ -10,6 +10,11 @@ import BlogPost from "@components/Blog/BlogPost.js";
 import clientPromise from "@lib/mongodb.js";
 
 const Blog = (props) => {
+    // Calculate total number of pages
+    const getNumPages = () => {
+        return Math.floor(props.posts.length / 5) + 1;
+    };
+
     return (
         <div id={styles.blog}>
             <Head>
@@ -17,7 +22,7 @@ const Blog = (props) => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <div id={styles.control}>
-                <p id={styles["page-num"]}>Page # here</p>
+                <p id={styles["page-num"]}>Page 1 of {getNumPages()}</p>
                 <div id={styles["control-buttons"]}>
                     <Link href="/post">
                         <a
