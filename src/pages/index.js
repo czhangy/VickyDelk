@@ -33,7 +33,7 @@ const Home = (props) => {
 };
 
 // Fetch most recent 3 posts
-export async function getServerSideProps() {
+export async function getStaticProps() {
     // Fetch from MongoDB
     const client = await clientPromise;
     const db = client.db("VickyDelk");

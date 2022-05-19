@@ -59,7 +59,7 @@ const Blog = (props) => {
                 </div>
             </div>
             <ul id={styles.posts}>
-                {props.posts.map(function (post, i) {
+                {props.posts.map((post, i) => {
                     return (
                         <li className={styles["blog-post"]} key={i}>
                             <BlogPost post={post} />
@@ -72,7 +72,7 @@ const Blog = (props) => {
 };
 
 // Fetch all posts, sorted from most recent -> least recent
-export async function getServerSideProps() {
+export async function getStaticProps() {
     // Fetch from MongoDB
     const client = await clientPromise;
     const db = client.db("VickyDelk");
