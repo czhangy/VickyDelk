@@ -38,6 +38,10 @@
         .post-title {
             font-family: constants.$accent-font;
             font-size: 2rem;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 70%;
         }
 
         .post-timestamp {
@@ -106,6 +110,7 @@
 
             .post-title {
                 font-size: 1.3rem;
+                width: 100%;
             }
 
             .post-timestamp {

@@ -66,14 +66,17 @@ const Blog = (props) => {
     );
 };
 
+// Fetch all posts, sorted from most recent -> least recent
 export async function getServerSideProps() {
     // Fetch from MongoDB
     const client = await clientPromise;
     const db = client.db("VickyDelk");
-    let posts = await db.collection("posts").find({}).toArray();
+    let posts = await db
+        .collection("posts")
+        .find({})
+        .sort({ timestamp: -1 })
+        .toArray();
     posts = JSON.parse(JSON.stringify(posts));
-    // Sort by most recent
-    posts.sort((a, b) => (a.timestamp < b.timestamp ? 1 : -1));
     return {
         props: { posts },
     };

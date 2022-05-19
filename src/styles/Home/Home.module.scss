@@ -15,12 +15,18 @@
         width: 50%;
         position: relative;
         padding: 16px;
+    }
 
+    #recent-posts {
         #recent-posts-header {
             font-family: constants.$accent-font;
             font-size: 2rem;
             letter-spacing: 2px;
             margin-bottom: 2rem;
+        }
+
+        .recent-post {
+            margin-bottom: 50px;
         }
     }
 }
