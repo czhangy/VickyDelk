@@ -149,13 +149,43 @@ Start the application
 
 ## Roadmap
 
--   [x] Build out nav components
+-   [ ] Build out and test nav components
+
+    -   [x] Navbar with router links
+    -   [x] Footer
+    -   [ ] Nav menu for mobile displays
+
 -   [x] Build Home Page
+
+    -   [x] Profile photo
+    -   [x] Recent posts section to display the most recent 3 posts
+
 -   [ ] Build Blog Page
--   [ ] Build post blog interface
--   [ ] Build blog post API
--   [ ] Build blog page filters
--   [ ] Build auth
+
+    -   [x] Blog post cards to link to individual blog posts
+    -   [ ] Pagination (5 card max per page)
+    -   [ ] Sort
+    -   [ ] Filters (by post categories)
+
+-   [ ] Build Post API
+
+    -   [x] Fetching for list of posts + individual posts
+    -   [x] Posting to MongoDB
+    -   [ ] Updating existing posts
+    -   [ ] Deleting existing posts
+
+-   [ ] Build Post Page
+
+    -   [x] Form that submits to MongoDB
+    -   [ ] Protected delete button that clears the form
+    -   [ ] Add button that adds either an image or a paragraph
+    -   [x] Skeleton system to interweave images and paragraphs
+    -   [ ] Image uploading
+    -   [ ] Protected by auth
+    -   [ ] Element-specific delete buttons
+    -   [ ] Redirect on submit
+    -   [ ] Error on failed submit
+
 -   [ ] Build About Page
 -   [ ] Build Resume Page
 
