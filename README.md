@@ -177,10 +177,10 @@ Start the application
 -   [ ] Build Post Page
 
     -   [x] Form that submits to MongoDB
-    -   [ ] Protected delete button that clears the form
+    -   [x] Protected delete button that clears the form
     -   [ ] Add button that adds either an image or a paragraph
     -   [x] Skeleton system to interweave images and paragraphs
-    -   [ ] Image uploading
+    -   [ ] Image uploading and display
     -   [ ] Protected by auth
     -   [ ] Element-specific delete buttons
     -   [ ] Redirect on submit

@@ -10,7 +10,7 @@ const About = () => {
                 <title>About | Vicky Delk&apos;s Blog</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            A
+            <p>This page is a work in progress!</p>
         </div>
     );
 };
