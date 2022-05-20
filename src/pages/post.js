@@ -7,9 +7,28 @@ import Image from "next/image";
 import { useState } from "react";
 // Local components
 import AddModal from "@components/Post/AddModal.js";
+import DeleteModal from "@components/Post/DeleteModal.js";
 
 const Post = () => {
-    // Find index of element in content array
+    // Form control
+    const [formData, setFormData] = useState({
+        title: "",
+        content: [],
+        skeleton: [],
+    });
+    const updateTitle = (event) => {
+        setFormData({
+            ...formData,
+            title: event.target.value,
+        });
+    };
+    const updateSkeleton = (element) => {
+        setFormData({
+            ...formData,
+            skeleton: formData.skeleton.concat([element]),
+        });
+        closeAddModal();
+    };
     const getContentInd = (ind) => {
         let res = 0;
         // Find number of ps prior to ind
@@ -17,20 +36,6 @@ const Post = () => {
             res += formData.skeleton[i] === "p" ? 1 : 0;
         return res;
     };
-    // Hold form data
-    const [formData, setFormData] = useState({
-        title: "",
-        content: [],
-        skeleton: [],
-    });
-    // Change title
-    const updateTitle = (event) => {
-        setFormData({
-            ...formData,
-            title: event.target.value,
-        });
-    };
-    // Change content
     const updateContent = (event) => {
         let ind = parseInt(getContentInd(event.target.name));
         // Update the content array
@@ -50,15 +55,6 @@ const Post = () => {
             skeleton: formData.skeleton.filter((_, i) => i !== ind),
         });
     };
-    // Add to skeleton
-    const updateSkeleton = (element) => {
-        setFormData({
-            ...formData,
-            skeleton: formData.skeleton.concat([element]),
-        });
-        closeAddModal();
-    };
-    // Submit form data
     const handleSubmit = async (event) => {
         // Prevents the submit button from refreshing the page
         event.preventDefault();
@@ -87,23 +83,31 @@ const Post = () => {
             document.getElementById(styles["submit-button"]).disabled = true;
         }
     };
-    // Clear all form data
     const clearForm = () => {
         setFormData({
             title: "",
             content: [],
             skeleton: [],
         });
+        setDeleteModalOpen(false);
     };
-    // Add modal state
+
+    // Add modal control
     const [addModalOpen, setAddModalOpen] = useState(false);
-    // Open the add modal
     const openAddModal = () => {
         setAddModalOpen(true);
     };
-    // Close the add modal
     const closeAddModal = () => {
         setAddModalOpen(false);
+    };
+
+    // Delete modal control
+    const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+    const openDeleteModal = () => {
+        setDeleteModalOpen(true);
+    };
+    const closeDeleteModal = () => {
+        setDeleteModalOpen(false);
     };
 
     return (
@@ -116,6 +120,11 @@ const Post = () => {
                 open={addModalOpen}
                 onClose={closeAddModal}
                 onSelect={updateSkeleton}
+            />
+            <DeleteModal
+                open={deleteModalOpen}
+                onClose={closeDeleteModal}
+                onSelect={clearForm}
             />
             <form id={styles["post-form"]} onSubmit={handleSubmit}>
                 <div id={styles.tape} />
@@ -161,7 +170,7 @@ const Post = () => {
                         id={styles["delete-button"]}
                         className={styles["form-button"]}
                         type="button"
-                        onClick={clearForm}
+                        onClick={openDeleteModal}
                     >
                         <Image
                             src="/icons/delete.svg"

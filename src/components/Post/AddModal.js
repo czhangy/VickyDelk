@@ -16,10 +16,6 @@ const AddModal = ({ open, onClose, onSelect }) => {
     const contentClick = (e) => {
         e.stopPropagation();
     };
-    // Communicate new element back to Post
-    const handleSelect = () => {
-        onSelect("p");
-    };
 
     return (
         <div
@@ -29,7 +25,10 @@ const AddModal = ({ open, onClose, onSelect }) => {
         >
             <div id={styles["add-modal-content"]} onClick={contentClick}>
                 <h2 id={styles["add-header"]}>Add an Element</h2>
-                <button className={styles["add-button"]} onClick={handleSelect}>
+                <button
+                    className={styles["add-button"]}
+                    onClick={() => onSelect("p")}
+                >
                     <Image
                         src="/icons/paragraph.svg"
                         alt=""
