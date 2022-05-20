@@ -8,13 +8,16 @@ import { useState } from "react";
 // Local components
 import AddModal from "@components/Post/AddModal.js";
 import DeleteModal from "@components/Post/DeleteModal.js";
+import ContentElement from "@components/Post/ContentElement.js";
+import ImageElement from "@components/Post/ImageElement.js";
 
 const Post = () => {
     // Form control
     const [formData, setFormData] = useState({
         title: "",
-        content: [],
         skeleton: [],
+        content: [],
+        images: [],
     });
     const updateTitle = (event) => {
         setFormData({
@@ -29,31 +32,12 @@ const Post = () => {
         });
         closeAddModal();
     };
-    const getContentInd = (ind) => {
+    const getElementInd = (symbol, ind) => {
         let res = 0;
-        // Find number of ps prior to ind
+        // Find number of corresponding symbols prior to ind
         for (let i = 0; i < ind; i++)
-            res += formData.skeleton[i] === "p" ? 1 : 0;
+            res += formData.skeleton[i] === symbol ? 1 : 0;
         return res;
-    };
-    const updateContent = (event) => {
-        let ind = parseInt(getContentInd(event.target.name));
-        // Update the content array
-        let newContent = formData.content.slice();
-        newContent[ind] = event.target.value;
-        setFormData({
-            ...formData,
-            content: newContent,
-        });
-    };
-    const deleteContentField = (ind) => {
-        let contentInd = getContentInd(ind);
-        // Clear from content and skeleton arrays
-        setFormData({
-            ...formData,
-            content: formData.content.filter((_, i) => i !== contentInd),
-            skeleton: formData.skeleton.filter((_, i) => i !== ind),
-        });
     };
     const handleSubmit = async (event) => {
         // Prevents the submit button from refreshing the page
@@ -86,10 +70,53 @@ const Post = () => {
     const clearForm = () => {
         setFormData({
             title: "",
-            content: [],
             skeleton: [],
+            content: [],
+            images: [],
         });
         setDeleteModalOpen(false);
+    };
+
+    // Content element control
+    const updateContent = (event) => {
+        let ind = parseInt(getElementInd("p", event.target.name));
+        // Update the content array
+        let newContent = formData.content.slice();
+        newContent[ind] = event.target.value;
+        setFormData({
+            ...formData,
+            content: newContent,
+        });
+    };
+    const deleteContentField = (ind) => {
+        let contentInd = getElementInd("p", ind);
+        // Clear from content and skeleton arrays
+        setFormData({
+            ...formData,
+            content: formData.content.filter((_, i) => i !== contentInd),
+            skeleton: formData.skeleton.filter((_, i) => i !== ind),
+        });
+    };
+
+    // Image element control
+    const updateImages = (ind, file) => {
+        let imagesInd = parseInt(getElementInd("i", ind));
+        // Update the images array
+        let newImages = formData.images.slice();
+        newImages[imagesInd] = file;
+        setFormData({
+            ...formData,
+            images: newImages,
+        });
+    };
+    const deleteImageField = (ind) => {
+        let imagesInd = getElementInd("i", ind);
+        // Clear from image and skeleton arrays
+        setFormData({
+            ...formData,
+            content: formData.images.filter((_, i) => i !== imagesInd),
+            skeleton: formData.skeleton.filter((_, i) => i !== ind),
+        });
     };
 
     // Add modal control
@@ -139,30 +166,22 @@ const Post = () => {
                     // Render paragraph element
                     if (element === "p")
                         return (
-                            <div
-                                className={styles["form-content-container"]}
+                            <ContentElement
+                                ind={i}
                                 key={i}
-                            >
-                                <textarea
-                                    className={styles["form-content"]}
-                                    name={i}
-                                    value={formData.content[getContentInd(i)]}
-                                    onChange={(event) => updateContent(event)}
-                                    required
-                                ></textarea>
-                                <button
-                                    className={styles["form-content-delete"]}
-                                    type="button"
-                                    onClick={() => deleteContentField(i)}
-                                >
-                                    <Image
-                                        src="/icons/delete.svg"
-                                        alt=""
-                                        height={16}
-                                        width={16}
-                                    />
-                                </button>
-                            </div>
+                                text={formData.content[getElementInd("p", i)]}
+                                onUpdate={updateContent}
+                                onDelete={deleteContentField}
+                            />
+                        );
+                    else if (element === "i")
+                        return (
+                            <ImageElement
+                                key={i}
+                                ind={i}
+                                onUpdate={updateImages}
+                                onDelete={deleteImageField}
+                            />
                         );
                 })}
                 <div id={styles["form-buttons"]}>
@@ -187,7 +206,7 @@ const Post = () => {
                         onClick={openAddModal}
                     >
                         <Image
-                            src="/icons/add.svg"
+                            src="/icons/add-invert.svg"
                             alt=""
                             height={16}
                             width={16}

@@ -37,7 +37,10 @@ const AddModal = ({ open, onClose, onSelect }) => {
                     />
                     <p className={styles["add-text"]}>Paragraph</p>
                 </button>
-                <button className={styles["add-button"]}>
+                <button
+                    className={styles["add-button"]}
+                    onClick={() => onSelect("i")}
+                >
                     <Image
                         src="/icons/image.svg"
                         alt=""

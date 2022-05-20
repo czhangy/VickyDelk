@@ -1,0 +1,11 @@
+.delete-element-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+    padding: 8px;
+    border: 1px solid black;
+    border-left: none;
+    background: red;
+    cursor: pointer;
+}

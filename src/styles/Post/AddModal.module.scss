@@ -11,8 +11,8 @@
     justify-content: center;
     align-items: center;
     opacity: 0;
-    z-index: -1;
     transition: opacity 0.2s ease;
+    pointer-events: none;
 
     #add-modal-content {
         background: white;
@@ -51,6 +51,7 @@
 
 #add-modal.show-overlay {
     opacity: 1;
+    pointer-events: all;
     z-index: 999;
 
     #add-modal-content {
