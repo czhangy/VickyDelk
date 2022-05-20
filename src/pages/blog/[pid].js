@@ -3,6 +3,8 @@ import styles from "@styles/Blog/BlogPost.module.scss";
 // MongoDB
 import clientPromise from "@lib/mongodb.js";
 import { ObjectId } from "mongodb";
+// NextJS
+import Head from "next/head";
 
 const BlogPost = ({ post }) => {
     // Format timestamp to MM/DD/YYYY
@@ -36,6 +38,10 @@ const BlogPost = ({ post }) => {
 
     return (
         <div id={styles["blog-post"]}>
+            <Head>
+                <title>{post.title}</title>
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
             <div id={styles["post-container"]}>
                 <div id={styles.tape} />
                 <h1 id={styles["post-title"]}>{post.title}</h1>
