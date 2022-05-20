@@ -11,14 +11,9 @@ const Navbar = () => {
     // Nav menu state
     const [menuOpen, setMenuOpen] = useState(false);
 
-    // Open the nav menu state on button click
-    const openMenu = () => {
+    // Toggle the nav menu state on button click
+    const toggleMenu = () => {
         setMenuOpen(!menuOpen);
-    };
-
-    // Closes the menu on any non-button click
-    const closeMenu = () => {
-        if (menuOpen) setMenuOpen(false);
     };
 
     return (
@@ -37,11 +32,7 @@ const Navbar = () => {
                     <a className={styles["nav-link"]}>Resume</a>
                 </Link>
             </div>
-            <button
-                id={styles["menu-button"]}
-                onFocus={openMenu}
-                onBlur={closeMenu}
-            >
+            <button id={styles["menu-button"]} onClick={toggleMenu}>
                 <hr className={styles["menu-line"]} />
                 <hr className={styles["menu-line"]} />
                 <hr className={styles["menu-line"]} />

@@ -16,7 +16,7 @@ const BlogPostCard = ({ post }) => {
 
     return (
         <Link href={`/blog/${post._id}`}>
-            <div className={styles["blog-post-card"]}>
+            <a className={styles["blog-post-card"]}>
                 <div className={`${styles.tape} ${styles["top-tape"]}`} />
                 <div className={`${styles.tape} ${styles["bottom-tape"]}`} />
                 <div className={styles["post-header"]}>
@@ -34,7 +34,7 @@ const BlogPostCard = ({ post }) => {
                     </div>
                     <p className={styles["post-content"]}>{post.content[0]}</p>
                 </div>
-            </div>
+            </a>
         </Link>
     );
 };
