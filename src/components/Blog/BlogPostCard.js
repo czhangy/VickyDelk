@@ -26,7 +26,7 @@ const BlogPostCard = ({ post }) => {
                 <div className={styles["post-body"]}>
                     <div className={styles["post-image"]}>
                         <Image
-                            src="/images/profile.JPG"
+                            src={post.images[0]}
                             alt=""
                             layout="fill"
                             objectFit="cover"

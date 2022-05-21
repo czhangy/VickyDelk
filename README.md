@@ -184,12 +184,12 @@ Start the application
     -   [x] Protected delete button that clears the form
     -   [x] Add button that adds either an image or a paragraph
     -   [x] Skeleton system to interweave images and paragraphs
-    -   [ ] Image uploading and display using AWS
+    -   [x] Image uploading and display using AWS
     -   [ ] Protected by auth
     -   [x] Element-specific delete buttons
     -   [ ] Redirect on submit
     -   [ ] Error on failed submit
-    -   [ ] Persistent on refresh using lcoal storage API
+    -   [ ] Persistent on refresh using local storage API
 
 -   [ ] Build About Page
 -   [ ] Build Resume Page
