@@ -39,7 +39,7 @@
 
         .post-text {
             font-size: 1rem;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
             font-size: 1.2rem;
             font-family: constants.$main-font;
             text-indent: 80px;
@@ -47,6 +47,12 @@
             &:last-child {
                 margin-bottom: 0;
             }
+        }
+
+        .post-img {
+            margin-bottom: 2rem;
+            height: 200px;
+            position: relative;
         }
     }
 }

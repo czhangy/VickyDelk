@@ -129,11 +129,10 @@ const Post = () => {
         // Upload all files to AWS
         for (let i = 0; i < imgs.length; i++) {
             let { data } = await axios.post("/api/s3/upload", {
-                name: imgs[i].name,
+                name: `${formData.title}/${imgs[i].name}`,
                 type: imgs[i].type,
             });
             const url = data.url;
-            console.log(imgs[i]);
             let { data: newData } = await axios.put(url, imgs[i], {
                 headers: {
                     "Content-type": imgs[i].type,

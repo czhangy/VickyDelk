@@ -5,6 +5,7 @@ import clientPromise from "@lib/mongodb.js";
 import { ObjectId } from "mongodb";
 // NextJS
 import Head from "next/head";
+import Image from "next/image";
 
 const BlogPost = ({ post }) => {
     // Format timestamp to MM/DD/YYYY
@@ -31,6 +32,19 @@ const BlogPost = ({ post }) => {
                     </p>
                 );
                 pNum++;
+            } else if (post.skeleton[ind] === "i") {
+                console.log(post.images[iNum]);
+                skeleton.push(
+                    <div className={styles["post-img"]} key={ind}>
+                        <Image
+                            src={post.images[iNum]}
+                            alt=""
+                            layout="fill"
+                            objectFit="contain"
+                        />
+                    </div>
+                );
+                iNum++;
             }
         }
         return skeleton;
