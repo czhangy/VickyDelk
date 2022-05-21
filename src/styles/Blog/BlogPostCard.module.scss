@@ -55,12 +55,18 @@
         margin-top: 32px;
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
 
         .post-image {
             height: 240px;
             width: 240px;
             position: relative;
+        }
+
+        .post-placeholder {
+            height: 240px;
+            width: 240px;
+            background: grey;
         }
 
         .post-content {

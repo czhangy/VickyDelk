@@ -24,14 +24,18 @@ const BlogPostCard = ({ post }) => {
                     <p className={styles["post-timestamp"]}>{formatDate()}</p>
                 </div>
                 <div className={styles["post-body"]}>
-                    <div className={styles["post-image"]}>
-                        <Image
-                            src={post.images[0]}
-                            alt=""
-                            layout="fill"
-                            objectFit="cover"
-                        />
-                    </div>
+                    {post.images[0] ? (
+                        <div className={styles["post-image"]}>
+                            <Image
+                                src={post.images[0]}
+                                alt=""
+                                layout="fill"
+                                objectFit="cover"
+                            />
+                        </div>
+                    ) : (
+                        <div className={styles["post-placeholder"]} />
+                    )}
                     <p className={styles["post-content"]}>{post.content[0]}</p>
                 </div>
             </a>

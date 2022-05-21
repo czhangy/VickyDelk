@@ -8,6 +8,7 @@ import { useState } from "react";
 // Local components
 import AddModal from "@components/Post/AddModal.js";
 import DeleteModal from "@components/Post/DeleteModal.js";
+import SubmitModal from "@components/Post/SubmitModal.js";
 import ContentElement from "@components/Post/ContentElement.js";
 import ImageElement from "@components/Post/ImageElement.js";
 // Axios
@@ -44,9 +45,8 @@ const Post = () => {
     const handleSubmit = async (event) => {
         // Prevents the submit button from refreshing the page
         event.preventDefault();
-        // Disable the button
-        document.getElementById(styles["submit-button"]).disabled = true;
-        document.getElementById("submit-text").innerHTML = "Submitting...";
+        resetError();
+        openSubmitModal();
         // Build post
         const post = {
             ...formData,
@@ -61,13 +61,10 @@ const Post = () => {
         // Get the data
         let data = await response.json();
         if (data.success) {
-            clearForm();
-            document.getElementById("submit-text").innerHTML = "Submitted!";
+            confirmSubmit();
         } else {
             console.log(data.message);
-            // Re-enable the button
-            document.getElementById("submit-text").innerHTML = "Submit";
-            document.getElementById(styles["submit-button"]).disabled = true;
+            setError();
         }
     };
     const clearForm = () => {
@@ -165,6 +162,26 @@ const Post = () => {
         setDeleteModalOpen(false);
     };
 
+    // Submit modal control
+    const [submitModalOpen, setSubmitModalOpen] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [isError, setIsError] = useState(false);
+    const openSubmitModal = () => {
+        setSubmitModalOpen(true);
+    };
+    const closeSubmitModal = () => {
+        setSubmitModalOpen(false);
+    };
+    const confirmSubmit = () => {
+        setIsSubmitted(true);
+    };
+    const setError = () => {
+        setIsError(true);
+    };
+    const resetError = () => {
+        setIsError(false);
+    };
+
     return (
         <div id={styles["post"]}>
             <Head>
@@ -180,6 +197,12 @@ const Post = () => {
                 open={deleteModalOpen}
                 onClose={closeDeleteModal}
                 onSelect={clearForm}
+            />
+            <SubmitModal
+                open={submitModalOpen}
+                onClose={closeSubmitModal}
+                isSubmitted={isSubmitted}
+                isError={isError}
             />
             <form id={styles["post-form"]} onSubmit={handleSubmit}>
                 <div id={styles.tape} />
@@ -231,7 +254,7 @@ const Post = () => {
                         id={styles["add-button"]}
                         className={styles["form-button"]}
                         type="button"
-                        onClick={openAddModal}
+                        onClick={openSubmitModal}
                     >
                         <Image
                             src="/icons/add-invert.svg"

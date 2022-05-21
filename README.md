@@ -187,8 +187,8 @@ Start the application
     -   [x] Image uploading and display using AWS
     -   [ ] Protected by auth
     -   [x] Element-specific delete buttons
-    -   [ ] Redirect on submit
-    -   [ ] Error on failed submit
+    -   [x] Redirect on submit
+    -   [x] Error on failed submit
     -   [ ] Persistent on refresh using local storage API
 
 -   [ ] Build About Page
