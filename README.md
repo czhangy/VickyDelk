@@ -75,7 +75,7 @@
 <details>
     <summary>Server</summary>
     <br />
-    <a href="https://nodejs.org/">
+    <a href="https://nextjs.org/">
         <img src="https://img.shields.io/badge/NextJS-black?style=for-the-badge&logo=next.js&logoColor=white" alt="NextJS" />
     </a>
 </details>
@@ -85,6 +85,9 @@
     <br />
     <a href="https://www.mongodb.com/">
         <img src="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" />
+    </a>
+    <a href="https://aws.amazon.com/">
+        <img src="https://img.shields.io/badge/AWS-ff9900?style=for-the-badge&logo=amazon&logoColor=black" alt="AWS" />
     </a>
 </details>
 
@@ -112,10 +115,10 @@
 To run this project, you will need to add the following environment variables to your `.env` file
 
 -   `MONGODB_URI`
--   `S3_UPLOAD_BUCKET`
--   `S3_UPLOAD_REGION`
--   `S3_UPLOAD_KEY`
--   `S3_UPLOAD_SECRET`
+-   `BUCKET_NAME`
+-   `BUCKET_REGION`
+-   `S3_ACCESS_KEY`
+-   `S3_SECRET_KEY`
 
 <!-- Getting Started -->
 
