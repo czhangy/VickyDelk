@@ -6,25 +6,13 @@ import Image from "next/image";
 import Link from "next/link";
 // Local components
 import BlogPostCard from "@components/Blog/BlogPostCard.js";
-import LoginModal from "@components/Blog/LoginModal.js";
 // MongoDB
 import clientPromise from "@lib/mongodb.js";
-// React
-import { useState } from "react";
 
 const Blog = (props) => {
     // Calculate total number of pages
     const getNumPages = () => {
         return Math.floor(props.posts.length / 5) + 1;
-    };
-
-    // Login modal state
-    const [loginModalOpen, setLoginModalOpen] = useState(false);
-    const openLoginModal = () => {
-        setLoginModalOpen(true);
-    };
-    const closeLoginModal = () => {
-        setLoginModalOpen(false);
     };
 
     return (
@@ -33,22 +21,24 @@ const Blog = (props) => {
                 <title>Blog | Vicky Delk&apos;s Blog</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <LoginModal open={loginModalOpen} onClose={closeLoginModal} />
             <div id={styles.control}>
                 <p id={styles["page-num"]}>Page 1 of {getNumPages()}</p>
                 <div id={styles["control-buttons"]}>
-                    <button
-                        className={styles["control-button"]}
-                        onClick={openLoginModal}
-                    >
-                        <Image
-                            src="/icons/add.svg"
-                            alt=""
-                            height={16}
-                            width={16}
-                        />
-                        <p className={styles["button-text"]}>New Post</p>
-                    </button>
+                    {process.env.NODE_ENV === "development" && (
+                        <Link href="/post">
+                            <a className={styles["control-button"]}>
+                                <Image
+                                    src="/icons/add.svg"
+                                    alt=""
+                                    height={16}
+                                    width={16}
+                                />
+                                <p className={styles["button-text"]}>
+                                    New Post
+                                </p>
+                            </a>
+                        </Link>
+                    )}
                     <button className={styles["control-button"]}>
                         <Image
                             src="/icons/sort.svg"

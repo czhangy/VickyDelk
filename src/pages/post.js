@@ -3,8 +3,9 @@ import styles from "@styles/Post/Post.module.scss";
 // NextJS
 import Head from "next/head";
 import Image from "next/image";
+import { useRouter } from "next/router";
 // React
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // Local components
 import AddModal from "@components/Post/AddModal.js";
 import DeleteModal from "@components/Post/DeleteModal.js";
@@ -15,6 +16,12 @@ import ImageElement from "@components/Post/ImageElement.js";
 import axios from "axios";
 
 const Post = () => {
+    // Guard route
+    const router = useRouter();
+    useEffect(() => {
+        if (process.env.NODE_ENV === "production") router.push("/blog");
+    });
+
     // Form control
     const [formData, setFormData] = useState({
         title: "",
@@ -130,6 +137,7 @@ const Post = () => {
                 type: imgs[i].type,
             });
             const url = data.url;
+            console.log("handleAWS");
             let { data: newData } = await axios.put(url, imgs[i], {
                 headers: {
                     "Content-type": imgs[i].type,

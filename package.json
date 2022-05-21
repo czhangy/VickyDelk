@@ -5,7 +5,8 @@
     "scripts": {
         "dev": "next dev",
         "build": "next build",
-        "lint": "next lint"
+        "lint": "next lint",
+        "start": "next start"
     },
     "dependencies": {
         "aws-sdk": "^2.1140.0",
@@ -14,7 +15,8 @@
         "multer": "^1.4.4",
         "next": "12.1.6",
         "react": "18.1.0",
-        "react-dom": "18.1.0"
+        "react-dom": "18.1.0",
+        "sharp": "^0.30.4"
     },
     "devDependencies": {
         "eslint": "8.14.0",

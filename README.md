@@ -188,7 +188,7 @@ Start the application
     -   [x] Add button that adds either an image or a paragraph
     -   [x] Skeleton system to interweave images and paragraphs
     -   [x] Image uploading and display using AWS
-    -   [ ] Protected by auth
+    -   [x] Protected by auth
     -   [x] Element-specific delete buttons
     -   [x] Redirect on submit
     -   [x] Error on failed submit
