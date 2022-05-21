@@ -1,0 +1,70 @@
+@use "@styles/constants";
+
+#submit-modal {
+    background: rgba(black, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    z-index: 999;
+
+    #submit-modal-content {
+        background: white;
+        border-radius: 20px;
+        padding: 32px;
+        transform: translateY(10px);
+        transition: all 0.4s ease;
+
+        #submit-header {
+            text-align: center;
+            font-size: 2rem;
+            font-family: constants.$main-font;
+            margin-bottom: 32px;
+        }
+
+        #submit-icon {
+            display: flex;
+            justify-content: center;
+        }
+
+        .invert {
+            filter: invert(100%);
+        }
+
+        #blog-link {
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+            padding: 16px;
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            font-family: constants.$main-font;
+            background: constants.$accent-color;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+        }
+    }
+}
+
+#submit-modal.show-overlay {
+    opacity: 1;
+    pointer-events: all;
+
+    #submit-modal-content {
+        transform: translateY(0);
+    }
+}
+
+@media (hover: hover) {
+    #submit-modal > #submit-modal-content > #blog-link:hover {
+        transform: scale(1.03);
+        box-shadow: constants.$shadow;
+    }
+}

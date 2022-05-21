@@ -10,7 +10,7 @@ const Resume = () => {
                 <title>Resume | Vicky Delk&apos;s Blog</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            R
+            <p>This page is a work in progress!</p>
         </div>
     );
 };

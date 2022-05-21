@@ -27,6 +27,40 @@ if (process.env.NODE_ENV === "development") {
     clientPromise = client.connect();
 }
 
+let cachedClient = null;
+let cachedDb = null;
+
+export async function connectToDatabase() {
+    // check the cached.
+    if (cachedClient && cachedDb) {
+        // load from cache
+        return {
+            client: cachedClient,
+            db: cachedDb,
+        };
+    }
+
+    // set the connection options
+    const opts = {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    };
+
+    // Connect to cluster
+    let client = new MongoClient(uri, opts);
+    await client.connect();
+    let db = client.db("VickyDelk");
+
+    // set cache
+    cachedClient = client;
+    cachedDb = db;
+
+    return {
+        client: cachedClient,
+        db: cachedDb,
+    };
+}
+
 // Export a module-scoped MongoClient promise. By doing this in a
 // separate module, the client can be shared across functions.
 export default clientPromise;

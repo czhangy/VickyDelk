@@ -75,7 +75,7 @@
 <details>
     <summary>Server</summary>
     <br />
-    <a href="https://nodejs.org/">
+    <a href="https://nextjs.org/">
         <img src="https://img.shields.io/badge/NextJS-black?style=for-the-badge&logo=next.js&logoColor=white" alt="NextJS" />
     </a>
 </details>
@@ -85,6 +85,9 @@
     <br />
     <a href="https://www.mongodb.com/">
         <img src="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" />
+    </a>
+    <a href="https://aws.amazon.com/">
+        <img src="https://img.shields.io/badge/AWS-ff9900?style=for-the-badge&logo=amazon&logoColor=black" alt="AWS" />
     </a>
 </details>
 
@@ -111,7 +114,11 @@
 
 To run this project, you will need to add the following environment variables to your `.env` file
 
-`MONGODB_URI`
+-   `MONGODB_URI`
+-   `BUCKET_NAME`
+-   `BUCKET_REGION`
+-   `S3_ACCESS_KEY`
+-   `S3_SECRET_KEY`
 
 <!-- Getting Started -->
 
@@ -149,13 +156,44 @@ Start the application
 
 ## Roadmap
 
--   [x] Build out nav components
+-   [ ] Build out and test nav components
+
+    -   [x] Navbar with router links
+    -   [x] Footer
+    -   [ ] Nav menu for mobile displays
+
 -   [x] Build Home Page
+
+    -   [x] Profile photo
+    -   [x] Recent posts section to display the most recent 3 posts
+
 -   [ ] Build Blog Page
--   [ ] Build post blog interface
--   [ ] Build blog post API
--   [ ] Build blog page filters
--   [ ] Build auth
+
+    -   [x] Blog post cards to link to individual blog posts
+    -   [ ] Pagination (5 card max per page)
+    -   [ ] Sort
+    -   [ ] Filters (by post categories)
+
+-   [ ] Build Post API
+
+    -   [x] Fetching for list of posts + individual posts
+    -   [x] Posting to MongoDB
+    -   [ ] Updating existing posts
+    -   [ ] Deleting existing posts
+
+-   [ ] Build Post Page
+
+    -   [x] Form that submits to MongoDB
+    -   [x] Protected delete button that clears the form
+    -   [x] Add button that adds either an image or a paragraph
+    -   [x] Skeleton system to interweave images and paragraphs
+    -   [x] Image uploading and display using AWS
+    -   [ ] Protected by auth
+    -   [x] Element-specific delete buttons
+    -   [x] Redirect on submit
+    -   [x] Error on failed submit
+    -   [ ] Persistent on refresh using local storage API
+
 -   [ ] Build About Page
 -   [ ] Build Resume Page
 

@@ -1,0 +1,71 @@
+@use "@styles/constants";
+
+#delete-modal {
+    background: rgba(black, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    z-index: 999;
+
+    #delete-modal-content {
+        background: white;
+        border-radius: 20px;
+        padding: 32px;
+        transform: translateY(10px);
+        transition: transform 0.4s ease;
+
+        #delete-header {
+            text-align: center;
+            font-size: 2rem;
+            font-family: constants.$main-font;
+            margin-bottom: 32px;
+        }
+
+        .delete-button {
+            cursor: pointer;
+            margin-right: 32px;
+            background: white;
+            border: none;
+            border-radius: 10px;
+            height: 100px;
+            width: 100px;
+            transition: all 0.2s ease;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+
+        #no-button {
+            background: red;
+        }
+
+        #yes-button {
+            background: #4cbb17;
+        }
+    }
+}
+
+#delete-modal.show-overlay {
+    opacity: 1;
+    pointer-events: all;
+
+    #delete-modal-content {
+        transform: translateY(0);
+    }
+}
+
+@media (hover: hover) {
+    #delete-modal > #delete-modal-content > .delete-button:hover {
+        box-shadow: constants.$shadow;
+        transform: scale(1.03);
+    }
+}

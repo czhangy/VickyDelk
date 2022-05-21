@@ -1,10 +1,10 @@
 // Stylesheet
-import styles from "@styles/Blog/BlogPost.module.scss";
+import styles from "@styles/Blog/BlogPostCard.module.scss";
 // NextJS
 import Link from "next/link";
 import Image from "next/image";
 
-const BlogPost = ({ post }) => {
+const BlogPostCard = ({ post }) => {
     // Format timestamp to MM/DD/YYYY
     const formatDate = () => {
         let date = new Date(post.timestamp);
@@ -16,7 +16,7 @@ const BlogPost = ({ post }) => {
 
     return (
         <Link href={`/blog/${post._id}`}>
-            <div className={styles["blog-post"]}>
+            <a className={styles["blog-post-card"]}>
                 <div className={`${styles.tape} ${styles["top-tape"]}`} />
                 <div className={`${styles.tape} ${styles["bottom-tape"]}`} />
                 <div className={styles["post-header"]}>
@@ -24,19 +24,23 @@ const BlogPost = ({ post }) => {
                     <p className={styles["post-timestamp"]}>{formatDate()}</p>
                 </div>
                 <div className={styles["post-body"]}>
-                    <div className={styles["post-image"]}>
-                        <Image
-                            src="/images/profile.JPG"
-                            alt=""
-                            layout="fill"
-                            objectFit="cover"
-                        />
-                    </div>
+                    {post.images[0] ? (
+                        <div className={styles["post-image"]}>
+                            <Image
+                                src={post.images[0]}
+                                alt=""
+                                layout="fill"
+                                objectFit="cover"
+                            />
+                        </div>
+                    ) : (
+                        <div className={styles["post-placeholder"]} />
+                    )}
                     <p className={styles["post-content"]}>{post.content[0]}</p>
                 </div>
-            </div>
+            </a>
         </Link>
     );
 };
 
-export default BlogPost;
+export default BlogPostCard;

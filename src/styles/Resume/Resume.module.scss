@@ -2,4 +2,12 @@
 
 #resume {
     min-height: calc(100vh - constants.$navbar-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+        font-size: 3rem;
+        font-family: constants.$main-font;
+    }
 }
