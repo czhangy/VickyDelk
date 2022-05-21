@@ -254,7 +254,7 @@ const Post = () => {
                         id={styles["add-button"]}
                         className={styles["form-button"]}
                         type="button"
-                        onClick={openSubmitModal}
+                        onClick={openAddModal}
                     >
                         <Image
                             src="/icons/add-invert.svg"
