@@ -1,17 +1,9 @@
 // Stylesheet
 import styles from "@styles/Post/DeleteModal.module.scss";
-// React
-import { useEffect } from "react";
 // NextJS
 import Image from "next/image";
 
 const DeleteModal = ({ open, onClose, onSelect }) => {
-    // Prevent scroll on open
-    useEffect(() => {
-        open && (document.body.style.overflow = "hidden");
-        !open && (document.body.style.overflow = "unset");
-    }, [open]);
-
     // Stops click on content from closing modal
     const contentClick = (e) => {
         e.stopPropagation();

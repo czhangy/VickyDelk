@@ -111,7 +111,11 @@
 
 To run this project, you will need to add the following environment variables to your `.env` file
 
-`MONGODB_URI`
+-   `MONGODB_URI`
+-   `S3_UPLOAD_BUCKET`
+-   `S3_UPLOAD_REGION`
+-   `S3_UPLOAD_KEY`
+-   `S3_UPLOAD_SECRET`
 
 <!-- Getting Started -->
 
@@ -178,13 +182,14 @@ Start the application
 
     -   [x] Form that submits to MongoDB
     -   [x] Protected delete button that clears the form
-    -   [ ] Add button that adds either an image or a paragraph
+    -   [x] Add button that adds either an image or a paragraph
     -   [x] Skeleton system to interweave images and paragraphs
-    -   [ ] Image uploading and display
+    -   [ ] Image uploading and display using AWS
     -   [ ] Protected by auth
-    -   [ ] Element-specific delete buttons
+    -   [x] Element-specific delete buttons
     -   [ ] Redirect on submit
     -   [ ] Error on failed submit
+    -   [ ] Persistent on refresh using lcoal storage API
 
 -   [ ] Build About Page
 -   [ ] Build Resume Page

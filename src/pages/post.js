@@ -10,6 +10,8 @@ import AddModal from "@components/Post/AddModal.js";
 import DeleteModal from "@components/Post/DeleteModal.js";
 import ContentElement from "@components/Post/ContentElement.js";
 import ImageElement from "@components/Post/ImageElement.js";
+// Axios
+import axios from "axios";
 
 const Post = () => {
     // Form control
@@ -48,6 +50,7 @@ const Post = () => {
         // Build post
         const post = {
             ...formData,
+            images: await handleAWSUpload(),
             timestamp: new Date(),
         };
         // Fetch from backend route
@@ -117,6 +120,32 @@ const Post = () => {
             content: formData.images.filter((_, i) => i !== imagesInd),
             skeleton: formData.skeleton.filter((_, i) => i !== ind),
         });
+    };
+
+    // S3 Upload
+    const handleAWSUpload = async () => {
+        let urls = [];
+        const imgs = Array.from(formData.images);
+        // Upload all files to AWS
+        for (let i = 0; i < imgs.length; i++) {
+            let { data } = await axios.post("/api/s3/upload", {
+                name: imgs[i].name,
+                type: imgs[i].type,
+            });
+            const url = data.url;
+            console.log(imgs[i]);
+            let { data: newData } = await axios.put(url, imgs[i], {
+                headers: {
+                    "Content-type": imgs[i].type,
+                    "Access-Control-Allow-Origin": "*",
+                },
+            });
+            // Update URL
+            urls.push(
+                `https://vickydelk.s3.us-west-1.amazonaws.com/${formData.title}/${imgs[i].name}`
+            );
+        }
+        return urls;
     };
 
     // Add modal control

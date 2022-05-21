@@ -2,16 +2,8 @@
 import styles from "@styles/Post/AddModal.module.scss";
 // NextJS
 import Image from "next/image";
-// React
-import { useEffect } from "react";
 
 const AddModal = ({ open, onClose, onSelect }) => {
-    // Prevent scroll on open
-    useEffect(() => {
-        open && (document.body.style.overflow = "hidden");
-        !open && (document.body.style.overflow = "unset");
-    }, [open]);
-
     // Stops click on content from closing modal
     const contentClick = (e) => {
         e.stopPropagation();

@@ -25,7 +25,7 @@ const ImageElement = ({ ind, onUpdate, onDelete }) => {
         <div className={styles["image-element"]}>
             <div
                 className={`${styles["image-container"]} ${
-                    imgUpload.current && imgUpload.current.files
+                    imgUpload.current && imgUpload.current.files.length > 0
                         ? ""
                         : styles["hide"]
                 }`}
@@ -40,7 +40,7 @@ const ImageElement = ({ ind, onUpdate, onDelete }) => {
             </div>
             <div
                 className={`${styles["upload-container"]} ${
-                    imgUpload.current && imgUpload.current.files
+                    imgUpload.current && imgUpload.current.files.length > 0
                         ? styles["hide"]
                         : ""
                 }`}
