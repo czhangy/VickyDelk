@@ -170,8 +170,8 @@ Start the application
 -   [ ] Build Blog Page
 
     -   [x] Blog post cards to link to individual blog posts
-    -   [ ] Pagination (5 card max per page)
-    -   [ ] Sort
+    -   [x] Pagination (5 card max per page)
+    -   [x] Sort
     -   [ ] Filters (by post categories)
 
 -   [ ] Build Post API

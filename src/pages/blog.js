@@ -19,19 +19,24 @@ const Blog = (props) => {
     const refreshPosts = () => {
         let newPosts = Array.from(props.posts);
         if (!sort) newPosts.reverse();
+        newPosts = newPosts.slice(5 * (page - 1), 5 * page);
         setPosts(newPosts);
     };
 
     // Control state
     const [sort, setSort] = useState(true);
     const [filter, setFilter] = useState([]);
+    const [page, setPage] = useState(1);
     const selectSort = (option) => {
         localStorage.setItem("sort", option);
         setSort(option);
         closeSortMenu();
     };
+    const selectPage = (num) => {
+        setPage(num);
+    };
     // Listen for state changes
-    useEffect(() => refreshPosts(), [sort, filter]);
+    useEffect(() => refreshPosts(), [sort, filter, page]);
     // Pull from local storage if possible
     useEffect(() => {
         if (localStorage.getItem("sort") !== null)
@@ -61,7 +66,7 @@ const Blog = (props) => {
 
     // Calculate total number of pages
     const getNumPages = () => {
-        return Math.floor(props.posts.length / 5) + 1;
+        return Math.ceil(props.posts.length / 5);
     };
 
     return (
@@ -70,64 +75,89 @@ const Blog = (props) => {
                 <title>Blog | Vicky Delk&apos;s Blog</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <div id={styles.control}>
-                <p id={styles["page-num"]}>Page 1 of {getNumPages()}</p>
-                <div id={styles["control-buttons"]}>
-                    {process.env.NODE_ENV === "development" && (
-                        <Link href="/post">
-                            <a className={styles["control-button"]}>
-                                <Image
-                                    src="/icons/add.svg"
-                                    alt=""
-                                    height={16}
-                                    width={16}
-                                />
-                                <p className={styles["button-text"]}>
-                                    New Post
-                                </p>
-                            </a>
-                        </Link>
-                    )}
+            <div id={styles["blog-container"]}>
+                <div id={styles.control}>
+                    <p id={styles["page-num"]}>
+                        Page {page} of {getNumPages()}
+                    </p>
+                    <div id={styles["control-buttons"]}>
+                        {process.env.NODE_ENV === "development" && (
+                            <Link href="/post">
+                                <a className={styles["control-button"]}>
+                                    <Image
+                                        src="/icons/add.svg"
+                                        alt=""
+                                        height={16}
+                                        width={16}
+                                    />
+                                    <p className={styles["button-text"]}>
+                                        New Post
+                                    </p>
+                                </a>
+                            </Link>
+                        )}
+                        <button
+                            id="sort-button"
+                            className={styles["control-button"]}
+                            onClick={(event) => openSortMenu(event)}
+                            onBlur={closeSortMenu}
+                        >
+                            <Image
+                                src="/icons/sort.svg"
+                                alt=""
+                                height={16}
+                                width={16}
+                            />
+                            <p className={styles["button-text"]}>Sort By</p>
+                            <SortMenu
+                                open={sortMenuOpen}
+                                onClick={selectSort}
+                            />
+                        </button>
+                        <button
+                            className={styles["control-button"]}
+                            onClick={(event) => openFilterMenu(event)}
+                            onBlur={closeFilterMenu}
+                        >
+                            <Image
+                                src="/icons/filter.svg"
+                                alt=""
+                                height={16}
+                                width={16}
+                            />
+                            <p className={styles["button-text"]}>Filter</p>
+                            <FilterMenu open={filterMenuOpen} />
+                        </button>
+                    </div>
+                </div>
+                <ul id={styles.posts}>
+                    {posts.map((post, i) => {
+                        return (
+                            <li className={styles["blog-post"]} key={i}>
+                                <BlogPostCard post={post} />
+                            </li>
+                        );
+                    })}
+                </ul>
+                <div id={styles["nav-container"]}>
                     <button
-                        id="sort-button"
-                        className={styles["control-button"]}
-                        onClick={(event) => openSortMenu(event)}
-                        onBlur={closeSortMenu}
+                        className={`${styles["nav-button"]} ${
+                            page > 1 ? "" : styles["hidden"]
+                        }`}
+                        onClick={() => selectPage(page - 1)}
                     >
-                        <Image
-                            src="/icons/sort.svg"
-                            alt=""
-                            height={16}
-                            width={16}
-                        />
-                        <p className={styles["button-text"]}>Sort By</p>
-                        <SortMenu open={sortMenuOpen} onClick={selectSort} />
+                        &lt; Back
                     </button>
                     <button
-                        className={styles["control-button"]}
-                        onClick={(event) => openFilterMenu(event)}
-                        onBlur={closeFilterMenu}
+                        className={`${styles["nav-button"]} ${
+                            page < getNumPages() ? "" : styles["hidden"]
+                        }`}
+                        onClick={() => selectPage(page + 1)}
                     >
-                        <Image
-                            src="/icons/filter.svg"
-                            alt=""
-                            height={16}
-                            width={16}
-                        />
-                        <p className={styles["button-text"]}>Filter</p>
-                        <FilterMenu open={filterMenuOpen} />
+                        Next &gt;
                     </button>
                 </div>
             </div>
-            <ul id={styles.posts}>
-                {posts.map((post, i) => {
-                    return (
-                        <li className={styles["blog-post"]} key={i}>
-                            <BlogPostCard post={post} />
-                        </li>
-                    );
-                })}
-            </ul>
         </div>
     );
 };
