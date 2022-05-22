@@ -8,10 +8,11 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 // Local components
 import AddModal from "@components/Post/AddModal.js";
-import DeleteModal from "@components/Post/DeleteModal.js";
 import SubmitModal from "@components/Post/SubmitModal.js";
 import ContentElement from "@components/Post/ContentElement.js";
 import ImageElement from "@components/Post/ImageElement.js";
+// Global component
+import DeleteModal from "@components/Global/DeleteModal.js";
 // Axios
 import axios from "axios";
 
@@ -21,6 +22,11 @@ const Post = () => {
     useEffect(() => {
         if (process.env.NODE_ENV === "production") router.push("/blog");
     });
+
+    // Prevent Enter key from submitting
+    const checkKeyDown = (e) => {
+        if (e.code === "Enter") e.preventDefault();
+    };
 
     // Form control
     const [formData, setFormData] = useState({
@@ -237,6 +243,7 @@ const Post = () => {
                 open={deleteModalOpen}
                 onClose={closeDeleteModal}
                 onSelect={clearForm}
+                isLoading={false}
             />
             <SubmitModal
                 open={submitModalOpen}
@@ -244,7 +251,11 @@ const Post = () => {
                 isSubmitted={isSubmitted}
                 isError={isError}
             />
-            <form id={styles["post-form"]} onSubmit={handleSubmit}>
+            <form
+                id={styles["post-form"]}
+                onSubmit={handleSubmit}
+                onKeyDown={(e) => checkKeyDown(e)}
+            >
                 <div id={styles.tape} />
                 <input
                     id={styles["form-title"]}

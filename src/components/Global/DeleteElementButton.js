@@ -1,5 +1,5 @@
 // Stylesheet
-import styles from "@styles/Post/DeleteElementButton.module.scss";
+import styles from "@styles/Global/DeleteElementButton.module.scss";
 // NextJS
 import Image from "next/image";
 

@@ -51,6 +51,12 @@
         #yes-button {
             background: #4cbb17;
         }
+
+        #delete-icon {
+            display: flex;
+            justify-content: center;
+            filter: invert(100%);
+        }
     }
 }
 
