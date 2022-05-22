@@ -105,6 +105,7 @@
 
 | Color        | Hex     |
 | ------------ | ------- |
+| Main Color   | #6699CC |
 | Accent Color | #FFB6B7 |
 | Text Color   | #000000 |
 

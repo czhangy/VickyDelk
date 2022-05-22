@@ -23,6 +23,8 @@
         #page-num {
             font-family: constants.$accent-font;
             font-size: 2rem;
+            color: constants.$accent-color;
+            text-shadow: 2px 2px black;
         }
 
         #control-buttons {

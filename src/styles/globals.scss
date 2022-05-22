@@ -6,9 +6,12 @@ body {
     height: 100%;
     padding: 0;
     margin: 0;
-    background-image: url("/images/notebook-bg.jpg");
-    background-size: 100vw;
+    background: constants.$accent-color;
     overflow-x: hidden;
+}
+
+#app {
+    background: constants.$main-color;
 }
 
 a {
