@@ -15,8 +15,11 @@ import ImageElement from "@components/Post/ImageElement.js";
 import DeleteModal from "@components/Global/DeleteModal.js";
 // Axios
 import axios from "axios";
+// MongoDB
+import clientPromise from "@lib/mongodb.js";
+import { ObjectId } from "mongodb";
 
-const Post = () => {
+const Post = ({ oldPost }) => {
     // Guard route
     const router = useRouter();
     useEffect(() => {
@@ -36,6 +39,12 @@ const Post = () => {
         images: [],
     });
     useEffect(() => {
+        if (oldPost) {
+            localStorage.setItem("title", oldPost.title);
+            localStorage.setItem("skeleton", JSON.stringify(oldPost.skeleton));
+            localStorage.setItem("content", JSON.stringify(oldPost.content));
+            localStorage.setItem("images", JSON.stringify(oldPost.images));
+        }
         let persistData = { ...formData };
         if (localStorage.getItem("title") !== null)
             persistData["title"] = localStorage.getItem("title");
@@ -86,12 +95,12 @@ const Post = () => {
             images: await handleAWSUpload(),
             timestamp: new Date(),
         };
-        const route = router.query.edit
+        const route = oldPost
             ? `/api/posts?id=${router.query.edit}`
             : "/api/posts";
         // Fetch from backend route
         let response = await fetch(route, {
-            method: router.query.edit ? "PUT" : "POST",
+            method: oldPost ? "PUT" : "POST",
             body: JSON.stringify(post),
         });
         // Get the data
@@ -173,25 +182,29 @@ const Post = () => {
         const imgs = Array.from(formData.images);
         // Upload all files to AWS
         for (let i = 0; i < imgs.length; i++) {
-            let { data } = await axios
-                .post("/api/s3/upload", {
-                    name: `${formData.title}/${imgs[i].name}`,
-                    type: imgs[i].type,
-                })
-                .catch(() => setError());
-            const url = data.url;
-            await axios
-                .put(url, imgs[i], {
-                    headers: {
-                        "Content-type": imgs[i].type,
-                        "Access-Control-Allow-Origin": "*",
-                    },
-                })
-                .catch(() => setError());
-            // Update URL
-            urls.push(
-                `https://vickydelk.s3.us-west-1.amazonaws.com/${formData.title}/${imgs[i].name}`
-            );
+            // Skip images already in AWS
+            if (typeof imgs[i] === "string") urls.push(imgs[i]);
+            else {
+                let { data } = await axios
+                    .post("/api/s3/upload", {
+                        name: `${formData.title}/${imgs[i].name}`,
+                        type: imgs[i].type,
+                    })
+                    .catch(() => setError());
+                const url = data.url;
+                await axios
+                    .put(url, imgs[i], {
+                        headers: {
+                            "Content-type": imgs[i].type,
+                            "Access-Control-Allow-Origin": "*",
+                        },
+                    })
+                    .catch(() => setError());
+                // Update URL
+                urls.push(
+                    `https://vickydelk.s3.us-west-1.amazonaws.com/${formData.title}/${imgs[i].name}`
+                );
+            }
         }
         return urls;
     };
@@ -340,5 +353,25 @@ const Post = () => {
         </div>
     );
 };
+
+// Fetch old post
+export async function getServerSideProps(context) {
+    let oldPost = null;
+    if (context.query.edit) {
+        // Get ID from route
+        const pid = context.query.edit;
+        // Fetch from MongoDB
+        const client = await clientPromise;
+        const db = client.db("VickyDelk");
+        oldPost = await db
+            .collection("posts")
+            .find({ _id: new ObjectId(pid) })
+            .toArray();
+        oldPost = JSON.parse(JSON.stringify(oldPost))[0];
+    }
+    return {
+        props: { oldPost },
+    };
+}
 
 export default Post;
