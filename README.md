@@ -175,12 +175,12 @@ Start the application
     -   [x] Sort
     -   [ ] Filters (by post categories)
 
--   [ ] Build Post API
+-   [x] Build Post API
 
     -   [x] Fetching for list of posts + individual posts
     -   [x] Posting to MongoDB
-    -   [ ] Updating existing posts
-    -   [ ] Deleting existing posts
+    -   [x] Updating existing posts
+    -   [x] Deleting existing posts
 
 -   [ ] Build Post Page
 
@@ -196,6 +196,7 @@ Start the application
     -   [x] Redirect on submit
     -   [x] Error on failed submit
     -   [x] Persistent on refresh using local storage API
+    -   [x] Persist old post when editing
 
 -   [ ] Build About Page
 -   [ ] Build Resume Page
