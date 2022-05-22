@@ -18,6 +18,8 @@
     }
 
     #recent-posts {
+        margin: 0 auto;
+
         #recent-posts-header {
             font-family: constants.$accent-font;
             font-size: 2rem;
@@ -27,6 +29,9 @@
 
         .recent-post {
             margin-bottom: 50px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
         }
     }
 }
@@ -44,6 +49,7 @@
         }
 
         #recent-posts {
+            width: 90%;
             padding-top: 50px;
         }
     }
