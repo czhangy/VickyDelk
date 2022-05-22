@@ -114,7 +114,7 @@ const Blog = (props) => {
                                 onClick={selectSort}
                             />
                         </button>
-                        <button
+                        {/* <button
                             className={styles["control-button"]}
                             onClick={(event) => openFilterMenu(event)}
                             onBlur={closeFilterMenu}
@@ -127,7 +127,7 @@ const Blog = (props) => {
                             />
                             <p className={styles["button-text"]}>Filter</p>
                             <FilterMenu open={filterMenuOpen} />
-                        </button>
+                        </button> */}
                     </div>
                 </div>
                 <ul id={styles.posts}>
