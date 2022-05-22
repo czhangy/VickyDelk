@@ -19,7 +19,7 @@ import { useEffect, useState } from "react";
 import EditPostButton from "@components/Post/EditPostButton";
 
 const Blog = ({ posts }) => {
-    // Set up router for refresh
+    // Set up router for refresh/redirect
     const router = useRouter();
 
     // Control state
@@ -108,6 +108,14 @@ const Blog = ({ posts }) => {
         return visiblePosts;
     };
 
+    // Redirect to edit page
+    const goToEdit = (id) => {
+        router.push({
+            pathname: "/post",
+            query: { edit: id },
+        });
+    };
+
     return (
         <div id={styles.blog}>
             <Head>
@@ -190,9 +198,7 @@ const Blog = ({ posts }) => {
                                 )}
                                 {process.env.NODE_ENV === "development" && (
                                     <EditPostButton
-                                        onClick={() =>
-                                            openDeleteModal(post._id)
-                                        }
+                                        onClick={() => goToEdit(post._id)}
                                     />
                                 )}
                             </li>

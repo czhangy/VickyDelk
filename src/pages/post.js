@@ -86,9 +86,12 @@ const Post = () => {
             images: await handleAWSUpload(),
             timestamp: new Date(),
         };
+        const route = router.query.edit
+            ? `/api/posts?id=${router.query.edit}`
+            : "/api/posts";
         // Fetch from backend route
-        let response = await fetch("/api/posts", {
-            method: "POST",
+        let response = await fetch(route, {
+            method: router.query.edit ? "PUT" : "POST",
             body: JSON.stringify(post),
         });
         // Get the data
@@ -96,7 +99,10 @@ const Post = () => {
         if (data.success) {
             confirmSubmit();
             localStorage.clear();
-        } else setError();
+        } else {
+            console.log(data.message);
+            setError();
+        }
     };
     const clearForm = () => {
         setFormData({
