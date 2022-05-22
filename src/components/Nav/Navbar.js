@@ -10,7 +10,9 @@ import NavMenu from "@components/Nav/NavMenu";
 const Navbar = () => {
     // Nav menu state
     const [menuOpen, setMenuOpen] = useState(false);
-    const openMenu = () => {
+    const openMenu = (event) => {
+        // Safari focus workaround
+        event.target.focus();
         setMenuOpen(true);
         document.getElementById(styles["menu-button"]).style.background =
             "blue";
@@ -39,7 +41,7 @@ const Navbar = () => {
             </div>
             <button
                 id={styles["menu-button"]}
-                onFocus={openMenu}
+                onClick={(event) => openMenu(event)}
                 onBlur={closeMenu}
             >
                 <hr className={styles["menu-line"]} />
