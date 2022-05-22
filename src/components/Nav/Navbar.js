@@ -10,10 +10,15 @@ import NavMenu from "@components/Nav/NavMenu";
 const Navbar = () => {
     // Nav menu state
     const [menuOpen, setMenuOpen] = useState(false);
-
-    // Toggle the nav menu state on button click
-    const toggleMenu = () => {
-        setMenuOpen(!menuOpen);
+    const openMenu = () => {
+        setMenuOpen(true);
+        document.getElementById(styles["menu-button"]).style.background =
+            "blue";
+    };
+    const closeMenu = () => {
+        setMenuOpen(false);
+        document.getElementById(styles["menu-button"]).style.background =
+            "none";
     };
 
     return (
@@ -32,7 +37,11 @@ const Navbar = () => {
                     <a className={styles["nav-link"]}>Resume</a>
                 </Link>
             </div>
-            <button id={styles["menu-button"]} onClick={toggleMenu}>
+            <button
+                id={styles["menu-button"]}
+                onFocus={openMenu}
+                onBlur={closeMenu}
+            >
                 <hr className={styles["menu-line"]} />
                 <hr className={styles["menu-line"]} />
                 <hr className={styles["menu-line"]} />
