@@ -8,10 +8,11 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 // Local components
 import AddModal from "@components/Post/AddModal.js";
-import DeleteModal from "@components/Post/DeleteModal.js";
 import SubmitModal from "@components/Post/SubmitModal.js";
 import ContentElement from "@components/Post/ContentElement.js";
 import ImageElement from "@components/Post/ImageElement.js";
+// Global component
+import DeleteModal from "@components/Global/DeleteModal.js";
 // Axios
 import axios from "axios";
 
@@ -242,6 +243,7 @@ const Post = () => {
                 open={deleteModalOpen}
                 onClose={closeDeleteModal}
                 onSelect={clearForm}
+                isLoading={false}
             />
             <SubmitModal
                 open={submitModalOpen}

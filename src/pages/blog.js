@@ -9,8 +9,9 @@ import { useRouter } from "next/router";
 import BlogPostCard from "@components/Blog/BlogPostCard.js";
 import SortMenu from "@components/Blog/SortMenu.js";
 import FilterMenu from "@components/Blog/FilterMenu.js";
-import DeleteModal from "@components/Post/DeleteModal.js";
-import DeleteElementButton from "@components/Post/DeleteElementButton.js";
+// Global components
+import DeleteModal from "@components/Global/DeleteModal.js";
+import DeleteElementButton from "@components/Global/DeleteElementButton.js";
 // MongoDB
 import clientPromise from "@lib/mongodb.js";
 // React
@@ -60,6 +61,7 @@ const Blog = ({ posts }) => {
     };
 
     // Delete modal state
+    const [isLoading, setIsLoading] = useState(false);
     const [deleteID, setDeleteID] = useState(null);
     const [deleteModalOpen, setDeleteModalOpen] = useState(false);
     const openDeleteModal = (id) => {
@@ -67,9 +69,11 @@ const Blog = ({ posts }) => {
         setDeleteID(id);
     };
     const closeDeleteModal = () => setDeleteModalOpen(false);
+    const toggleIsLoading = () => setIsLoading(!isLoading);
 
     // Delete post
     const deletePost = async () => {
+        toggleIsLoading();
         // Send request to backend route
         let response = await fetch("/api/posts", {
             method: "DELETE",
@@ -86,12 +90,13 @@ const Blog = ({ posts }) => {
         if (data.success) {
             router.replace(router.asPath);
         } else console.log(data.message);
+        toggleIsLoading();
         closeDeleteModal();
     };
 
     // Calculate total number of pages
     const getNumPages = () => {
-        return Math.ceil(posts.length / 5);
+        return Math.max(1, Math.ceil(posts.length / 5));
     };
 
     // Apply control to posts
@@ -112,6 +117,7 @@ const Blog = ({ posts }) => {
                 open={deleteModalOpen}
                 onSelect={deletePost}
                 onClose={closeDeleteModal}
+                isLoading={isLoading}
             />
             <div id={styles["blog-container"]}>
                 <div id={styles.control}>

@@ -1,7 +1,7 @@
 // Stylesheet
 import styles from "@styles/Post/ImageElement.module.scss";
 // Local component
-import DeleteElementButton from "@components/Post/DeleteElementButton.js";
+import DeleteElementButton from "@components/Global/DeleteElementButton.js";
 // NextJS
 import Image from "next/image";
 // React

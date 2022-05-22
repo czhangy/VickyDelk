@@ -1,7 +1,7 @@
 // Stylesheet
 import styles from "@styles/Post/ContentElement.module.scss";
-// Import local component
-import DeleteElementButton from "@components/Post/DeleteElementButton.js";
+// Gocal component
+import DeleteElementButton from "@components/Global/DeleteElementButton.js";
 
 const ContentElement = ({ ind, text, onUpdate, onDelete }) => {
     return (
