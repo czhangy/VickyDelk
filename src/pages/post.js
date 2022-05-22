@@ -29,16 +29,36 @@ const Post = () => {
         content: [],
         images: [],
     });
+    useEffect(() => {
+        let persistData = { ...formData };
+        if (localStorage.getItem("title") !== null)
+            persistData["title"] = localStorage.getItem("title");
+        if (localStorage.getItem("skeleton") !== null)
+            persistData["skeleton"] = JSON.parse(
+                localStorage.getItem("skeleton")
+            );
+        if (localStorage.getItem("content") !== null)
+            persistData["content"] = JSON.parse(
+                localStorage.getItem("content")
+            );
+        if (localStorage.getItem("images") !== null)
+            persistData["images"] = JSON.parse(localStorage.getItem("images"));
+        setFormData(persistData);
+    }, []);
     const updateTitle = (event) => {
+        const newTitle = event.target.value;
+        localStorage.setItem("title", newTitle);
         setFormData({
             ...formData,
-            title: event.target.value,
+            title: newTitle,
         });
     };
     const updateSkeleton = (element) => {
+        const newSkeleton = formData.skeleton.concat([element]);
+        localStorage.setItem("skeleton", JSON.stringify(newSkeleton));
         setFormData({
             ...formData,
-            skeleton: formData.skeleton.concat([element]),
+            skeleton: newSkeleton,
         });
         closeAddModal();
     };
@@ -69,10 +89,8 @@ const Post = () => {
         let data = await response.json();
         if (data.success) {
             confirmSubmit();
-        } else {
-            console.log(data.message);
-            setError();
-        }
+            localStorage.clear();
+        } else setError();
     };
     const clearForm = () => {
         setFormData({
@@ -82,47 +100,58 @@ const Post = () => {
             images: [],
         });
         setDeleteModalOpen(false);
+        localStorage.clear();
     };
 
     // Content element control
     const updateContent = (event) => {
-        let ind = parseInt(getElementInd("p", event.target.name));
+        const ind = parseInt(getElementInd("p", event.target.name));
         // Update the content array
         let newContent = formData.content.slice();
         newContent[ind] = event.target.value;
+        localStorage.setItem("content", JSON.stringify(newContent));
         setFormData({
             ...formData,
             content: newContent,
         });
     };
     const deleteContentField = (ind) => {
-        let contentInd = getElementInd("p", ind);
+        const contentInd = getElementInd("p", ind);
+        const newContent = formData.content.filter((_, i) => i !== contentInd);
+        const newSkeleton = formData.skeleton.filter((_, i) => i !== ind);
+        localStorage.setItem("content", JSON.stringify(newContent));
+        localStorage.setItem("skeleton", JSON.stringify(newSkeleton));
         // Clear from content and skeleton arrays
         setFormData({
             ...formData,
-            content: formData.content.filter((_, i) => i !== contentInd),
-            skeleton: formData.skeleton.filter((_, i) => i !== ind),
+            content: newContent,
+            skeleton: newSkeleton,
         });
     };
 
     // Image element control
     const updateImages = (ind, file) => {
-        let imagesInd = parseInt(getElementInd("i", ind));
+        const imagesInd = parseInt(getElementInd("i", ind));
         // Update the images array
         let newImages = formData.images.slice();
         newImages[imagesInd] = file;
+        localStorage.setItem("images", JSON.stringify(newImages));
         setFormData({
             ...formData,
             images: newImages,
         });
     };
     const deleteImageField = (ind) => {
-        let imagesInd = getElementInd("i", ind);
+        const imagesInd = getElementInd("i", ind);
+        const newImages = formData.images.filter((_, i) => i !== imagesInd);
+        const newSkeleton = formData.skeleton.filter((_, i) => i !== ind);
+        localStorage.setItem("images", JSON.stringify(newImages));
+        localStorage.setItem("skeleton", JSON.stringify(newSkeleton));
         // Clear from image and skeleton arrays
         setFormData({
             ...formData,
-            content: formData.images.filter((_, i) => i !== imagesInd),
-            skeleton: formData.skeleton.filter((_, i) => i !== ind),
+            images: newImages,
+            skeleton: newSkeleton,
         });
     };
 
@@ -132,18 +161,21 @@ const Post = () => {
         const imgs = Array.from(formData.images);
         // Upload all files to AWS
         for (let i = 0; i < imgs.length; i++) {
-            let { data } = await axios.post("/api/s3/upload", {
-                name: `${formData.title}/${imgs[i].name}`,
-                type: imgs[i].type,
-            });
+            let { data } = await axios
+                .post("/api/s3/upload", {
+                    name: `${formData.title}/${imgs[i].name}`,
+                    type: imgs[i].type,
+                })
+                .catch(() => setError());
             const url = data.url;
-            console.log("handleAWS");
-            let { data: newData } = await axios.put(url, imgs[i], {
-                headers: {
-                    "Content-type": imgs[i].type,
-                    "Access-Control-Allow-Origin": "*",
-                },
-            });
+            await axios
+                .put(url, imgs[i], {
+                    headers: {
+                        "Content-type": imgs[i].type,
+                        "Access-Control-Allow-Origin": "*",
+                    },
+                })
+                .catch(() => setError());
             // Update URL
             urls.push(
                 `https://vickydelk.s3.us-west-1.amazonaws.com/${formData.title}/${imgs[i].name}`
