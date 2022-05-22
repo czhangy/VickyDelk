@@ -150,7 +150,7 @@ Install dependencies
 Start the application
 
 ```bash
-  npm run start
+  npm run dev
 ```
 
 <!-- Roadmap -->
