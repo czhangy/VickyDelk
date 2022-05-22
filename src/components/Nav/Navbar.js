@@ -14,13 +14,10 @@ const Navbar = () => {
         // Safari focus workaround
         event.target.focus();
         setMenuOpen(true);
-        document.getElementById(styles["menu-button"]).style.background =
-            "blue";
     };
     const closeMenu = () => {
-        setMenuOpen(false);
-        document.getElementById(styles["menu-button"]).style.background =
-            "none";
+        // Allow nav links to be clicked before menu close
+        setTimeout(() => setMenuOpen(false), 50);
     };
 
     return (
