@@ -26,12 +26,17 @@ const Blog = (props) => {
     const [sort, setSort] = useState(true);
     const [filter, setFilter] = useState([]);
     const selectSort = (option) => {
+        localStorage.setItem("sort", option);
         setSort(option);
         closeSortMenu();
-        console.log(option);
     };
     // Listen for state changes
-    useEffect(() => refreshPosts(), [sort]);
+    useEffect(() => refreshPosts(), [sort, filter]);
+    // Pull from local storage if possible
+    useEffect(() => {
+        if (localStorage.getItem("sort") !== null)
+            setSort(JSON.parse(localStorage.getItem("sort")));
+    });
 
     // Sort menu state
     const [sortMenuOpen, setSortMenuOpen] = useState(false);
