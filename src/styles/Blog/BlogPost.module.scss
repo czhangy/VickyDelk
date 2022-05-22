@@ -51,8 +51,37 @@
 
         .post-img {
             margin-bottom: 2rem;
-            height: 200px;
+            height: 300px;
             position: relative;
+        }
+    }
+}
+
+@media screen and (max-width: constants.$mobile) {
+    #blog-post {
+        padding: 32px 16px;
+
+        #post-container {
+            padding: 16px 32px;
+
+            #tape {
+                height: 30px;
+                width: 125px;
+                top: -15px;
+            }
+
+            #post-title {
+                font-size: 1.5rem;
+            }
+
+            #post-timestamp {
+                font-size: 1.2rem;
+                margin-bottom: 2rem;
+            }
+
+            .post-img {
+                height: 200px;
+            }
         }
     }
 }
