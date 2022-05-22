@@ -16,6 +16,7 @@ import DeleteElementButton from "@components/Global/DeleteElementButton.js";
 import clientPromise from "@lib/mongodb.js";
 // React
 import { useEffect, useState } from "react";
+import EditPostButton from "@components/Post/EditPostButton";
 
 const Blog = ({ posts }) => {
     // Set up router for refresh
@@ -182,6 +183,13 @@ const Blog = ({ posts }) => {
                                 {process.env.NODE_ENV === "development" && (
                                     <DeleteElementButton
                                         ind={-1}
+                                        onClick={() =>
+                                            openDeleteModal(post._id)
+                                        }
+                                    />
+                                )}
+                                {process.env.NODE_ENV === "development" && (
+                                    <EditPostButton
                                         onClick={() =>
                                             openDeleteModal(post._id)
                                         }
