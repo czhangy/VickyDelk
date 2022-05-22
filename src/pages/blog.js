@@ -4,24 +4,21 @@ import styles from "@styles/Blog/Blog.module.scss";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 // Local components
 import BlogPostCard from "@components/Blog/BlogPostCard.js";
-import FilterMenu from "@components/Blog/FilterMenu.js";
 import SortMenu from "@components/Blog/SortMenu.js";
+import FilterMenu from "@components/Blog/FilterMenu.js";
+import DeleteModal from "@components/Post/DeleteModal.js";
+import DeleteElementButton from "@components/Post/DeleteElementButton.js";
 // MongoDB
 import clientPromise from "@lib/mongodb.js";
 // React
 import { useEffect, useState } from "react";
 
-const Blog = (props) => {
-    // Posts state
-    const [posts, setPosts] = useState(Array.from(props.posts));
-    const refreshPosts = () => {
-        let newPosts = Array.from(props.posts);
-        if (!sort) newPosts.reverse();
-        newPosts = newPosts.slice(5 * (page - 1), 5 * page);
-        setPosts(newPosts);
-    };
+const Blog = ({ posts }) => {
+    // Set up router for refresh
+    const router = useRouter();
 
     // Control state
     const [sort, setSort] = useState(true);
@@ -35,8 +32,6 @@ const Blog = (props) => {
     const selectPage = (num) => {
         setPage(num);
     };
-    // Listen for state changes
-    useEffect(() => refreshPosts(), [sort, filter, page]);
     // Pull from local storage if possible
     useEffect(() => {
         if (localStorage.getItem("sort") !== null)
@@ -64,9 +59,47 @@ const Blog = (props) => {
         setTimeout(() => setSortMenuOpen(false), 50);
     };
 
+    // Delete modal state
+    const [deleteID, setDeleteID] = useState(null);
+    const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+    const openDeleteModal = (id) => {
+        setDeleteModalOpen(true);
+        setDeleteID(id);
+    };
+    const closeDeleteModal = () => setDeleteModalOpen(false);
+
+    // Delete post
+    const deletePost = async () => {
+        // Send request to backend route
+        let response = await fetch("/api/posts", {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                id: deleteID,
+            }),
+        });
+        // Get the response
+        let data = await response.json();
+        // Refresh props on success
+        if (data.success) {
+            router.replace(router.asPath);
+        } else console.log(data.message);
+        closeDeleteModal();
+    };
+
     // Calculate total number of pages
     const getNumPages = () => {
-        return Math.ceil(props.posts.length / 5);
+        return Math.ceil(posts.length / 5);
+    };
+
+    // Apply control to posts
+    const getVisiblePosts = () => {
+        let visiblePosts = Array.from(posts);
+        if (!sort) visiblePosts.reverse();
+        visiblePosts = visiblePosts.slice(5 * (page - 1), 5 * page);
+        return visiblePosts;
     };
 
     return (
@@ -75,6 +108,11 @@ const Blog = (props) => {
                 <title>Blog | Vicky Delk&apos;s Blog</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+            <DeleteModal
+                open={deleteModalOpen}
+                onSelect={deletePost}
+                onClose={closeDeleteModal}
+            />
             <div id={styles["blog-container"]}>
                 <div id={styles.control}>
                     <p id={styles["page-num"]}>
@@ -131,10 +169,18 @@ const Blog = (props) => {
                     </div>
                 </div>
                 <ul id={styles.posts}>
-                    {posts.map((post, i) => {
+                    {getVisiblePosts().map((post, i) => {
                         return (
                             <li className={styles["blog-post"]} key={i}>
                                 <BlogPostCard post={post} />
+                                {process.env.NODE_ENV === "development" && (
+                                    <DeleteElementButton
+                                        ind={-1}
+                                        onClick={() =>
+                                            openDeleteModal(post._id)
+                                        }
+                                    />
+                                )}
                             </li>
                         );
                     })}
@@ -163,7 +209,7 @@ const Blog = (props) => {
 };
 
 // Fetch all posts, sorted from most recent -> least recent
-export async function getStaticProps() {
+export async function getServerSideProps() {
     // Fetch from MongoDB
     const client = await clientPromise;
     const db = client.db("VickyDelk");

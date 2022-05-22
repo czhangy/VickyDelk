@@ -22,6 +22,11 @@ const Post = () => {
         if (process.env.NODE_ENV === "production") router.push("/blog");
     });
 
+    // Prevent Enter key from submitting
+    const checkKeyDown = (e) => {
+        if (e.code === "Enter") e.preventDefault();
+    };
+
     // Form control
     const [formData, setFormData] = useState({
         title: "",
@@ -244,7 +249,11 @@ const Post = () => {
                 isSubmitted={isSubmitted}
                 isError={isError}
             />
-            <form id={styles["post-form"]} onSubmit={handleSubmit}>
+            <form
+                id={styles["post-form"]}
+                onSubmit={handleSubmit}
+                onKeyDown={(e) => checkKeyDown(e)}
+            >
                 <div id={styles.tape} />
                 <input
                     id={styles["form-title"]}
