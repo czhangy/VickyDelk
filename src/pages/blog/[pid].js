@@ -33,7 +33,6 @@ const BlogPost = ({ post }) => {
                 );
                 pNum++;
             } else if (post.skeleton[ind] === "i") {
-                console.log(post.images[iNum]);
                 skeleton.push(
                     <div className={styles["post-img"]} key={ind}>
                         <Image

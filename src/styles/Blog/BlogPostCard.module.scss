@@ -83,7 +83,8 @@
 
 @media screen and (max-width: constants.$laptop) {
     .blog-post-card > .post-body {
-        .post-image {
+        .post-image,
+        .post-placeholder {
             display: none;
         }
 
@@ -125,14 +126,9 @@
             }
         }
 
-        .post-body {
-            display: none;
+        .post-body > .post-content {
+            font-size: 0.8rem;
+            -webkit-line-clamp: 5;
         }
-    }
-}
-
-@media (hover: hover) {
-    .blog-post-card:hover {
-        transform: scale(1.03);
     }
 }

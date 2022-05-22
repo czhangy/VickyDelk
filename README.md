@@ -156,11 +156,11 @@ Start the application
 
 ## Roadmap
 
--   [ ] Build out and test nav components
+-   [x] Build out and test nav components
 
     -   [x] Navbar with router links
     -   [x] Footer
-    -   [ ] Nav menu for mobile displays
+    -   [x] Nav menu for mobile displays
 
 -   [x] Build Home Page
 
@@ -170,8 +170,8 @@ Start the application
 -   [ ] Build Blog Page
 
     -   [x] Blog post cards to link to individual blog posts
-    -   [ ] Pagination (5 card max per page)
-    -   [ ] Sort
+    -   [x] Pagination (5 card max per page)
+    -   [x] Sort
     -   [ ] Filters (by post categories)
 
 -   [ ] Build Post API

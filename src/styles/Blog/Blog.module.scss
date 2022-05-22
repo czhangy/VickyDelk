@@ -7,10 +7,14 @@
     align-items: center;
     padding: 64px 32px;
 
-    #control {
-        min-width: 400px;
+    #blog-container {
+        min-width: 350px;
         width: 80%;
-        max-width: 800px;
+        max-width: 1000px;
+    }
+
+    #control {
+        width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -34,7 +38,7 @@
                 align-items: center;
                 cursor: pointer;
                 padding: 8px 16px;
-                transition: all 0.2s ease;
+                position: relative;
 
                 .button-text {
                     font-family: constants.$main-font;
@@ -50,24 +54,40 @@
     }
 
     #posts {
-        min-width: 350px;
-        width: 80%;
-        max-width: 800px;
+        width: 100%;
         margin: 0 auto;
         display: block;
 
         .blog-post {
             margin-bottom: 32px;
+        }
+    }
 
-            &:last-child {
-                margin-bottom: 0;
-            }
+    #nav-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        .nav-button {
+            font-family: constants.$main-font;
+            font-size: 1.2rem;
+            background: constants.$accent-color;
+            color: black;
+            border: none;
+            border-radius: 4px;
+            margin-right: 16px;
+            cursor: pointer;
+            padding: 8px 16px;
+        }
+
+        .hidden {
+            opacity: 0;
         }
     }
 }
 
 @media screen and (max-width: constants.$laptop) {
-    #blog > #control {
+    #blog > #blog-container > #control {
         justify-content: center;
 
         #page-num {
@@ -77,14 +97,13 @@
 }
 
 @media screen and (max-width: constants.$mobile) {
-    #blog > #control > #control-buttons > .control-button > .button-text {
-        font-size: 0.9rem;
-    }
-}
+    #blog > #blog-container {
+        #control > #control-buttons > .control-button > .button-text {
+            font-size: 0.9rem;
+        }
 
-@media (hover: hover) {
-    #blog > #control > #control-buttons > .control-button:hover {
-        transform: scale(1.03);
-        box-shadow: constants.$shadow;
+        #nav-container > .nav-button {
+            font-size: 0.9rem;
+        }
     }
 }
