@@ -156,11 +156,11 @@ Start the application
 
 ## Roadmap
 
--   [ ] Build out and test nav components
+-   [x] Build out and test nav components
 
     -   [x] Navbar with router links
     -   [x] Footer
-    -   [ ] Nav menu for mobile displays
+    -   [x] Nav menu for mobile displays
 
 -   [x] Build Home Page
 

@@ -6,10 +6,54 @@ import Image from "next/image";
 import Link from "next/link";
 // Local components
 import BlogPostCard from "@components/Blog/BlogPostCard.js";
+import FilterMenu from "@components/Blog/FilterMenu.js";
+import SortMenu from "@components/Blog/SortMenu.js";
 // MongoDB
 import clientPromise from "@lib/mongodb.js";
+// React
+import { useEffect, useState } from "react";
 
 const Blog = (props) => {
+    // Posts state
+    const [posts, setPosts] = useState(Array.from(props.posts));
+    const refreshPosts = () => {
+        let newPosts = Array.from(props.posts);
+        if (!sort) newPosts.reverse();
+        setPosts(newPosts);
+    };
+
+    // Control state
+    const [sort, setSort] = useState(true);
+    const [filter, setFilter] = useState([]);
+    const selectSort = (option) => {
+        setSort(option);
+        closeSortMenu();
+        console.log(option);
+    };
+    // Listen for state changes
+    useEffect(() => refreshPosts(), [sort]);
+
+    // Sort menu state
+    const [sortMenuOpen, setSortMenuOpen] = useState(false);
+    const openSortMenu = (event) => {
+        event.target.focus();
+        setSortMenuOpen(true);
+    };
+    const closeSortMenu = () => {
+        setTimeout(() => setSortMenuOpen(false), 50);
+    };
+
+    // Filter menu state
+    const [filterMenuOpen, setFilterMenuOpen] = useState(false);
+    const openFilterMenu = (event) => {
+        event.target.focus();
+        setFilterMenuOpen(true);
+    };
+    const closeFilterMenu = () => {
+        setFilterMenuOpen(false);
+        setTimeout(() => setSortMenuOpen(false), 50);
+    };
+
     // Calculate total number of pages
     const getNumPages = () => {
         return Math.floor(props.posts.length / 5) + 1;
@@ -39,7 +83,12 @@ const Blog = (props) => {
                             </a>
                         </Link>
                     )}
-                    <button className={styles["control-button"]}>
+                    <button
+                        id="sort-button"
+                        className={styles["control-button"]}
+                        onClick={(event) => openSortMenu(event)}
+                        onBlur={closeSortMenu}
+                    >
                         <Image
                             src="/icons/sort.svg"
                             alt=""
@@ -47,8 +96,13 @@ const Blog = (props) => {
                             width={16}
                         />
                         <p className={styles["button-text"]}>Sort By</p>
+                        <SortMenu open={sortMenuOpen} onClick={selectSort} />
                     </button>
-                    <button className={styles["control-button"]}>
+                    <button
+                        className={styles["control-button"]}
+                        onClick={(event) => openFilterMenu(event)}
+                        onBlur={closeFilterMenu}
+                    >
                         <Image
                             src="/icons/filter.svg"
                             alt=""
@@ -56,11 +110,12 @@ const Blog = (props) => {
                             width={16}
                         />
                         <p className={styles["button-text"]}>Filter</p>
+                        <FilterMenu open={filterMenuOpen} />
                     </button>
                 </div>
             </div>
             <ul id={styles.posts}>
-                {props.posts.map((post, i) => {
+                {posts.map((post, i) => {
                     return (
                         <li className={styles["blog-post"]} key={i}>
                             <BlogPostCard post={post} />
