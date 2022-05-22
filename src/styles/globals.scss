@@ -60,7 +60,7 @@ input[type="file"] {
 }
 
 ::-webkit-scrollbar-track {
-    background: rgba(yellow, 0.3);
+    background: constants.$main-color;
 }
 
 @media screen and (max-width: constants.$laptop-l) {

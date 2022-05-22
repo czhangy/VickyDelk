@@ -186,6 +186,8 @@ Start the application
 
     -   [x] Form that submits to MongoDB
     -   [x] Protected delete button that clears the form
+    -   [x] Title input
+    -   [ ] Tag system
     -   [x] Add button that adds either an image or a paragraph
     -   [x] Skeleton system to interweave images and paragraphs
     -   [x] Image uploading and display using AWS
@@ -193,7 +195,7 @@ Start the application
     -   [x] Element-specific delete buttons
     -   [x] Redirect on submit
     -   [x] Error on failed submit
-    -   [ ] Persistent on refresh using local storage API
+    -   [x] Persistent on refresh using local storage API
 
 -   [ ] Build About Page
 -   [ ] Build Resume Page
